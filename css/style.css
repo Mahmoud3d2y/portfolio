@@ -657,6 +657,168 @@ button { font: inherit; color: inherit; }
   color: var(--on-dark-muted);
 }
 
+/* ---------- Contact chooser ---------- */
+.icon-fill { fill: currentColor; stroke: none; }
+
+.contact-sheet {
+  width: min(28rem, calc(100vw - 2rem));
+  max-width: none;
+  max-height: calc(100dvh - 2rem);
+  padding: 0;
+  border: 0;
+  border-radius: 22px;
+  background: transparent;
+  color: var(--ink);
+  overflow: visible;
+}
+.contact-sheet::backdrop {
+  background: rgb(11 11 11 / 0.45);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+.contact-sheet[open] .sheet-card { animation: sheet-in 420ms var(--ease) both; }
+.contact-sheet[open]::backdrop { animation: fade-in 300ms ease both; }
+@keyframes sheet-in { from { opacity: 0; transform: translateY(16px) scale(0.98); } }
+@keyframes fade-in { from { opacity: 0; } }
+
+.sheet-card {
+  padding: 1.25rem;
+  border-radius: 22px;
+  background: var(--surface);
+  box-shadow: 0 1px 0 rgb(0 0 0 / 0.04), 0 24px 60px -12px rgb(0 0 0 / 0.35);
+}
+.sheet-head { display: flex; align-items: center; gap: 0.875rem; }
+.sheet-avatar {
+  width: 3rem; height: 3rem;
+  flex: none;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: 50% 28%;
+  filter: grayscale(1);
+  background: var(--dark);
+}
+.sheet-title { font-size: 1.0625rem; font-weight: 500; letter-spacing: -0.015em; }
+.sheet-sub {
+  display: flex;
+  align-items: center;
+  gap: 0.4375rem;
+  font-size: 0.8125rem;
+  color: var(--muted);
+}
+.sheet-close {
+  display: grid;
+  place-items: center;
+  width: 2.75rem; height: 2.75rem;
+  margin-left: auto;
+  border: 0;
+  border-radius: 50%;
+  background: var(--bg);
+  cursor: pointer;
+  font-size: 1.125rem;
+  transition: background-color var(--t-fast) ease;
+}
+.sheet-close:hover { background: var(--line); }
+
+.sheet-label {
+  margin: 1.25rem 0 0.625rem;
+  font-size: 0.8125rem;
+  color: var(--muted);
+}
+.sheet-options { display: grid; gap: 0.5rem; }
+.option {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  min-height: 4.5rem;
+  padding: 0.75rem 1rem 0.75rem 0.75rem;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  text-decoration: none;
+  transition: border-color var(--t-fast) ease, background-color var(--t-fast) ease, transform var(--t-fast) ease;
+}
+.option:hover { border-color: var(--ink); background: #FAFAF8; }
+.option:active { transform: scale(0.985); }
+.option-icon {
+  display: grid;
+  place-items: center;
+  width: 2.75rem; height: 2.75rem;
+  flex: none;
+  border-radius: 12px;
+}
+.option-icon svg { width: 1.5rem; height: 1.5rem; }
+.option--wa .option-icon { background: #E7F8EE; color: #128C4B; }
+.option--wa .option-icon svg { fill: currentColor; }
+.option--mail .option-icon { background: var(--bg); color: var(--ink); }
+.option-text { display: grid; min-width: 0; }
+.option-text strong { font-size: 0.9375rem; font-weight: 500; }
+.option-text small {
+  font-size: 0.8125rem;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.option-badge {
+  margin-left: auto;
+  padding: 0.1875rem 0.5rem;
+  border-radius: 999px;
+  background: var(--ink);
+  color: var(--surface);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+.option-arrow {
+  margin-left: auto;
+  color: var(--muted);
+  transition: transform var(--t-med) var(--ease), color var(--t-fast) ease;
+}
+.option-badge + .option-arrow { margin-left: 0; }
+.option:hover .option-arrow { color: var(--ink); transform: translate(2px, -2px); }
+
+.sheet-foot {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--line);
+}
+.sheet-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4375rem;
+  min-height: 2.75rem;
+  padding: 0 0.75rem;
+  border: 0;
+  border-radius: 999px;
+  background: none;
+  font-size: 0.875rem;
+  color: var(--muted);
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color var(--t-fast) ease, color var(--t-fast) ease;
+}
+.sheet-link:hover { background: var(--bg); color: var(--ink); }
+
+@media (max-width: 560px) {
+  .contact-sheet {
+    width: 100vw;
+    max-height: 100dvh;
+    margin: auto 0 0;
+    border-radius: 22px 22px 0 0;
+  }
+  .sheet-card {
+    border-radius: 22px 22px 0 0;
+    padding-bottom: calc(1.25rem + env(safe-area-inset-bottom));
+  }
+  .contact-sheet[open] .sheet-card { animation-name: sheet-up; }
+  .option-badge { display: none; }
+  .option-badge + .option-arrow { margin-left: auto; }
+  @keyframes sheet-up { from { transform: translateY(100%); } }
+}
+
 /* ---------- Toast ---------- */
 .toast {
   position: fixed;

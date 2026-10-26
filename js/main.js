@@ -27,7 +27,7 @@
     'nav.work': 'Projets',
     'nav.services': 'Services',
     'nav.contact': 'Contact',
-    'nav.book': 'Prendre contact',
+    'nav.book': 'Discutons',
     'nav.menu': 'Menu',
     'nav.close': 'Fermer',
 
@@ -72,16 +72,29 @@
     'contact.eyebrow': 'Disponible pour de nouveaux projets',
     'contact.title': 'Une idée' + NNBSP + '? Donnons-lui vie.',
     'contact.text': 'Dites-moi ce que vous faites et ce que votre site doit accomplir. Où que vous soyez, nous pouvons travailler ensemble.',
-    'contact.cta': 'M’écrire',
+    'contact.cta': 'Me contacter',
     'contact.copy': 'Copier l’e-mail',
     'contact.copied': 'Adresse copiée',
+    'sheet.title': 'Contacter Mahmoud',
+    'sheet.sub': 'Disponible pour de nouveaux projets',
+    'sheet.close': 'Fermer',
+    'sheet.pick': 'Comment souhaitez-vous me joindre' + NNBSP + '?',
+    'sheet.fast': 'Le plus rapide',
+    'sheet.other': 'Autre application mail',
+    'msg.text': 'Bonjour Mahmoud, j’ai vu votre portfolio et j’aimerais parler d’un projet.',
+    'msg.subject': 'Demande de projet',
     'footer.place': 'Brazzaville, Congo — disponible partout'
   };
 
   const EN_EXTRA = {
     'nav.close': 'Close',
-    'contact.copied': 'Email copied'
+    'contact.copied': 'Email copied',
+    'msg.text': 'Hello Mahmoud, I saw your portfolio and would like to talk about a project.',
+    'msg.subject': 'Project inquiry'
   };
+
+  /* EDIT: contact details used by the chooser and WhatsApp links */
+  const CONTACT = { email: 'mahmoudsaadaoui029@gmail.com', whatsapp: '242061198139' };
 
   /* ---------- Language ---------- */
   const i18nEls = document.querySelectorAll('[data-i18n]');
@@ -113,6 +126,18 @@
     langBtn.setAttribute('aria-label', other === 'fr' ? 'Passer en français' : 'Switch to English');
     menuBtn.querySelector('.menu-label').textContent = t(nav.classList.contains('is-open') ? 'nav.close' : 'nav.menu');
     if (!greetingPicked) setGreeting(homeWord(), false);
+    updateContactLinks();
+  }
+
+  /* Prefill WhatsApp and Gmail with a message in the page language */
+  function updateContactLinks() {
+    const enc = encodeURIComponent;
+    document.querySelectorAll('[data-whatsapp]').forEach(a => {
+      a.href = `https://wa.me/${CONTACT.whatsapp}?text=${enc(t('msg.text'))}`;
+    });
+    document.querySelectorAll('[data-gmail]').forEach(a => {
+      a.href = `https://mail.google.com/mail/?view=cm&fs=1&to=${enc(CONTACT.email)}&su=${enc(t('msg.subject'))}&body=${enc(t('msg.text'))}`;
+    });
   }
 
   langBtn.addEventListener('click', () => {
@@ -251,6 +276,26 @@
     document.querySelectorAll('.reveal').forEach(el => el.classList.add('is-in'));
   }
 
+  /* ---------- Contact chooser (WhatsApp / Gmail) ---------- */
+  // Without <dialog> support the triggers stay plain mailto: links.
+  const sheet = document.getElementById('contact-sheet');
+  const canDialog = typeof sheet.showModal === 'function';
+  let lastTrigger = null;
+  function closeSheet() { if (sheet.open) sheet.close(); }
+  if (canDialog) {
+    document.querySelectorAll('[data-contact]').forEach(el => el.addEventListener('click', e => {
+      e.preventDefault();
+      lastTrigger = el;
+      if (nav.classList.contains('is-open')) setMenu(false);
+      sheet.showModal();
+    }));
+    sheet.addEventListener('click', e => {
+      if (e.target === sheet || e.target.closest('[data-close]')) closeSheet(); // backdrop or close button
+      else if (e.target.closest('.option, a.sheet-link')) setTimeout(closeSheet, 150);
+    });
+    sheet.addEventListener('close', () => { if (lastTrigger) lastTrigger.focus(); });
+  }
+
   /* ---------- Copy email ---------- */
   const toast = document.getElementById('toast');
   let toastTimer;
@@ -276,6 +321,7 @@
       try { document.execCommand('copy'); } catch (err) { /* ignore */ }
       ta.remove();
     }
+    closeSheet();
     showToast(t('contact.copied') + ' — ' + email);
   });
 
