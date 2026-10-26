@@ -943,6 +943,90 @@ button { font: inherit; color: inherit; }
 }
 .sheet-link:hover { background: var(--bg); color: var(--ink); }
 
+/* Mail app picker (second view of the sheet) */
+.sheet-view[hidden] { display: none; }
+.sheet-view { animation: view-in 320ms var(--ease) both; }
+@keyframes view-in { from { opacity: 0; transform: translateX(10px); } }
+.sheet-link .icon { width: 0.875rem; height: 0.875rem; }
+.apps-head { margin-top: 1rem; }
+.sheet-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  min-height: 2.75rem;
+  padding: 0 0.75rem 0 0.375rem;
+  border: 0;
+  border-radius: 999px;
+  background: var(--bg);
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: background-color var(--t-fast) ease;
+}
+.sheet-back:hover { background: var(--line); }
+.apps-title { margin-top: 1rem; margin-bottom: 0.25rem; color: var(--ink); font-size: 0.9375rem; font-weight: 500; }
+.apps-note { font-size: 0.8125rem; color: var(--muted); margin-bottom: 0.75rem; }
+.app-list { display: grid; gap: 0.375rem; }
+.app-item[hidden] { display: none; }
+.app-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  min-height: 3.5rem;
+  padding: 0.5rem 0.875rem 0.5rem 0.5rem;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: none;
+  font-size: 0.9375rem;
+  text-align: left;
+  text-decoration: none;
+  cursor: pointer;
+  transition: border-color var(--t-fast) ease, background-color var(--t-fast) ease, transform var(--t-fast) ease;
+}
+.app-row:hover { border-color: var(--ink); background: #FAFAF8; }
+.app-row:active { transform: scale(0.985); }
+.app-row.is-busy { opacity: 0.6; }
+.app-tile {
+  display: grid;
+  place-items: center;
+  width: 2.5rem; height: 2.5rem;
+  flex: none;
+  border-radius: 11px;
+  font-weight: 600;
+  font-size: 1rem;
+  color: #fff;
+}
+.app-tile svg { width: 1.375rem; height: 1.375rem; }
+.app-tile--gmail { background: #EA4335; }
+.app-tile--outlook { background: #0F6CBD; }
+.app-tile--yahoo { background: #6001D2; }
+.app-tile--apple { background: #1E88F5; }
+.app-tile--default { background: var(--bg); color: var(--ink); }
+.app-name { font-weight: 500; }
+.app-hint { margin-left: auto; font-size: 0.75rem; color: var(--muted); }
+.app-hint + .option-arrow { margin-left: 0; }
+.app-missing {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25rem 0.5rem;
+  margin: 0.375rem 0.25rem 0.25rem;
+  font-size: 0.8125rem;
+  color: var(--muted);
+}
+.app-missing[hidden] { display: none; }
+.app-store {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.25rem;
+  padding: 0 0.875rem;
+  border-radius: 999px;
+  background: var(--ink);
+  color: var(--surface);
+  font-weight: 500;
+  text-decoration: none;
+}
+
 @media (max-width: 560px) {
   .contact-sheet {
     width: 100vw;

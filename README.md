@@ -5,6 +5,7 @@ Personal portfolio for Mahmoud Saadaoui, independent freelance web designer and 
 - **Bilingual**: English is written in `index.html`; French lives in `js/main.js` (`FR` object). The FR/EN button remembers the visitor's choice, and French browsers get French by default.
 - **Greeting**: the hero says Mbote (Lingala), Bonjour and Hello once on load, then settles on the page language; visitors can switch it with the buttons below.
 - **Live clock**: shows the current time in Brazzaville.
+- **Contact chooser**: WhatsApp Business or Gmail, plus a mail-app picker (Gmail, Outlook, Yahoo Mail, Apple Mail, default app). On Android it opens the app or the Play Store; on iPhone it opens the app and shows an App Store link if nothing opened; on computers it opens the web version. Settings are in `MAIL_APPS` and `CONTACT` in `js/main.js`.
 - **Accessible**: skip link, visible focus, keyboard-operable mobile menu (Escape closes it), reduced-motion support, AA text contrast.
 
 ## Structure

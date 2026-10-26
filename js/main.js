@@ -81,6 +81,16 @@
     'sheet.pick': 'Comment souhaitez-vous me joindre' + NNBSP + '?',
     'sheet.fast': 'Le plus rapide',
     'sheet.other': 'Autre application mail',
+    'apps.back': 'Retour',
+    'apps.title': 'Choisissez votre application mail',
+    'apps.hint': 'Ouvrir',
+    'apps.default': 'Application mail par défaut',
+    'apps.defaultHint': 'Cet appareil',
+    'apps.missing': 'Application non installée' + NNBSP + '?',
+    'apps.getIos': 'La télécharger sur l’App Store',
+    'apps.noteAndroid': 'Ouvre l’application, ou le Play Store si elle n’est pas installée.',
+    'apps.noteIos': 'Ouvre l’application. Si elle n’est pas installée, un lien vers l’App Store apparaît.',
+    'apps.noteDesktop': 'Ouvre la version web dans un nouvel onglet.',
     'msg.text': 'Bonjour Mahmoud, j’ai vu votre portfolio et j’aimerais parler d’un projet.',
     'msg.subject': 'Demande de projet',
     'footer.kicker': 'Disponible pour de nouveaux projets',
@@ -105,6 +115,9 @@
     'contact.copied': 'Email copied',
     'msg.text': 'Hello Mahmoud, I saw your portfolio and would like to talk about a project.',
     'msg.subject': 'Project inquiry',
+    'apps.noteAndroid': 'Opens the app, or the Play Store if it isn’t installed.',
+    'apps.noteIos': 'Opens the app. If it isn’t installed, a link to the App Store appears.',
+    'apps.noteDesktop': 'Opens the web version in a new tab.',
     'tz.same': 'Same time as you — easy to set up a call.',
     'tz.ahead': 'I’m {n} ahead of you.',
     'tz.behind': 'I’m {n} behind you.'
@@ -331,6 +344,7 @@
       e.preventDefault();
       lastTrigger = el;
       if (nav.classList.contains('is-open')) setMenu(false);
+      sheet.querySelectorAll('.sheet-view').forEach(v => { v.hidden = v.dataset.view !== 'main'; });
       sheet.showModal();
     }));
     sheet.addEventListener('click', e => {
@@ -339,6 +353,103 @@
     });
     sheet.addEventListener('close', () => { if (lastTrigger) lastTrigger.focus(); });
   }
+
+  /* ---------- Mail apps: open the app on phones, the web version on computers ---------- */
+  // A web page cannot see which apps are installed. Android falls back to the Play Store by itself
+  // (intent: URL); on iPhone we show an App Store link if the page is still visible after a moment.
+  const ua = navigator.userAgent;
+  const isIOS = /iPad|iPhone|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  const isAndroid = /Android/i.test(ua);
+  const isMac = !isIOS && /Macintosh/.test(ua);
+  const MAIL_APPS = {
+    gmail: {
+      ios: 'googlegmail://co?to={to}&subject={su}&body={body}',
+      appStore: 'https://apps.apple.com/app/id422689480',
+      android: 'com.google.android.gm',
+      web: 'https://mail.google.com/mail/?view=cm&fs=1&to={to}&su={su}&body={body}'
+    },
+    outlook: {
+      ios: 'ms-outlook://compose?to={to}&subject={su}&body={body}',
+      appStore: 'https://apps.apple.com/app/id951937596',
+      android: 'com.microsoft.office.outlook',
+      web: 'https://outlook.live.com/mail/0/deeplink/compose?to={to}&subject={su}&body={body}'
+    },
+    yahoo: {
+      ios: 'ymail://mail/compose?to={to}&subject={su}&body={body}',
+      appStore: 'https://apps.apple.com/app/id577586159',
+      android: 'com.yahoo.mobile.client.android.mail',
+      web: 'https://compose.mail.yahoo.com/?to={to}&subject={su}&body={body}'
+    },
+    apple: { mailto: true }
+  };
+  const fill = tpl => tpl
+    .replace('{to}', encodeURIComponent(CONTACT.email))
+    .replace('{su}', encodeURIComponent(t('msg.subject')))
+    .replace('{body}', encodeURIComponent(t('msg.text')));
+  const mailtoUrl = () => `mailto:${CONTACT.email}?subject=${encodeURIComponent(t('msg.subject'))}&body=${encodeURIComponent(t('msg.text'))}`;
+
+  // Apple Mail only exists on iPhone, iPad and Mac
+  if (!isIOS && !isMac) document.querySelector('[data-app-item="apple"]').hidden = true;
+  function setAppsNote() {
+    document.getElementById('apps-note').textContent = t(isAndroid ? 'apps.noteAndroid' : isIOS ? 'apps.noteIos' : 'apps.noteDesktop');
+  }
+
+  function openMailApp(key, row) {
+    const app = MAIL_APPS[key];
+    if (app.mailto) { location.href = mailtoUrl(); return; }
+    if (isAndroid) {
+      const play = 'https://play.google.com/store/apps/details?id=' + app.android;
+      const q = `subject=${encodeURIComponent(t('msg.subject'))}&body=${encodeURIComponent(t('msg.text'))}`;
+      location.href = `intent:${CONTACT.email}?${q}#Intent;scheme=mailto;action=android.intent.action.SENDTO;package=${app.android};S.browser_fallback_url=${encodeURIComponent(play)};end`;
+      return;
+    }
+    if (isIOS) {
+      const missing = row && row.closest('.app-item')?.querySelector('.app-missing');
+      document.querySelectorAll('.app-missing').forEach(m => { m.hidden = true; });
+      location.href = fill(app.ios);
+      setTimeout(() => {
+        if (document.hidden) return; // the app opened
+        if (missing) {
+          missing.querySelector('.app-store').href = app.appStore;
+          missing.hidden = false;
+        } else {
+          location.href = app.appStore;
+        }
+      }, 2000);
+      return;
+    }
+    window.open(fill(app.web), '_blank', 'noopener');
+    closeSheet();
+  }
+
+  document.querySelectorAll('[data-app]').forEach(el => el.addEventListener('click', e => {
+    const key = el.dataset.app;
+    if (key === 'default') { el.href = mailtoUrl(); return; } // plain mailto: link
+    // On computers the main Gmail option keeps its web link
+    if (el.matches('.option') && !isIOS && !isAndroid) return;
+    e.preventDefault();
+    e.stopPropagation();
+    let row = el.closest('.app-list') ? el : null;
+    if (!row && isIOS) {
+      // From the main view on iPhone, switch to the app list so the App Store link has a place to appear
+      showView('apps');
+      row = sheet.querySelector(`.app-list [data-app="${key}"]`);
+    }
+    openMailApp(key, row);
+  }));
+
+  // Switch between the two views of the sheet
+  function showView(name) {
+    sheet.querySelectorAll('.sheet-view').forEach(v => { v.hidden = v.dataset.view !== name; });
+    if (name === 'apps') setAppsNote();
+    const first = sheet.querySelector(`[data-view="${name}"] button, [data-view="${name}"] a`);
+    if (first) first.focus();
+  }
+  sheet.querySelectorAll('[data-go]').forEach(b => b.addEventListener('click', () => showView(b.dataset.go)));
+  sheet.addEventListener('close', () => {
+    sheet.querySelectorAll('.sheet-view').forEach(v => { v.hidden = v.dataset.view !== 'main'; });
+    document.querySelectorAll('.app-missing').forEach(m => { m.hidden = true; });
+  });
 
   /* ---------- Copy email ---------- */
   const toast = document.getElementById('toast');

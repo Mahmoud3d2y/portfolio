@@ -314,6 +314,7 @@
         </button>
       </div>
 
+      <div class="sheet-view" data-view="main">
       <p class="sheet-label" data-i18n="sheet.pick">How would you like to reach me?</p>
       <div class="sheet-options">
         <a class="option option--wa" href="https://wa.me/242061198139" target="_blank" rel="noopener" data-whatsapp>
@@ -325,7 +326,7 @@
           <span class="option-badge" data-i18n="sheet.fast">Fastest</span>
           <svg class="icon option-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
         </a>
-        <a class="option option--mail" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=mahmoudsaadaoui029%40gmail.com&amp;su=Project%20inquiry" target="_blank" rel="noopener" data-gmail>
+        <a class="option option--mail" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=mahmoudsaadaoui029%40gmail.com&amp;su=Project%20inquiry" target="_blank" rel="noopener" data-gmail data-app="gmail">
           <span class="option-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6.5A1.5 1.5 0 0 1 4.5 5h15A1.5 1.5 0 0 1 21 6.5v11a1.5 1.5 0 0 1-1.5 1.5h-15A1.5 1.5 0 0 1 3 17.5v-11Z" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="m3.5 6.5 8.5 6.5 8.5-6.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
           <span class="option-text">
             <strong>Gmail</strong>
@@ -340,9 +341,68 @@
           <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a1 1 0 0 1 1-1h9"/></svg>
           <span data-i18n="contact.copy">Copy email</span>
         </button>
-        <a class="sheet-link" href="mailto:mahmoudsaadaoui029@gmail.com?subject=Project%20inquiry">
+        <button class="sheet-link" type="button" data-go="apps">
           <span data-i18n="sheet.other">Other mail app</span>
-        </a>
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+        </button>
+      </div>
+      </div>
+
+      <div class="sheet-view" data-view="apps" hidden>
+        <div class="apps-head">
+          <button class="sheet-back" type="button" data-go="main">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg>
+            <span data-i18n="apps.back">Back</span>
+          </button>
+        </div>
+        <p class="sheet-label apps-title" data-i18n="apps.title">Choose your mail app</p>
+        <p class="apps-note" id="apps-note"></p>
+        <ul class="app-list">
+          <li class="app-item" data-app-item="gmail">
+            <button class="app-row" type="button" data-app="gmail">
+              <span class="app-tile app-tile--gmail" aria-hidden="true">G</span>
+              <span class="app-name">Gmail</span>
+              <span class="app-hint" data-i18n="apps.hint">Open</span>
+              <svg class="icon option-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
+            </button>
+            <p class="app-missing" hidden><span data-i18n="apps.missing">App not installed?</span> <a class="app-store" href="#" target="_blank" rel="noopener" data-i18n="apps.getIos">Get it on the App Store</a></p>
+          </li>
+          <li class="app-item" data-app-item="outlook">
+            <button class="app-row" type="button" data-app="outlook">
+              <span class="app-tile app-tile--outlook" aria-hidden="true">O</span>
+              <span class="app-name">Outlook</span>
+              <span class="app-hint" data-i18n="apps.hint">Open</span>
+              <svg class="icon option-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
+            </button>
+            <p class="app-missing" hidden><span data-i18n="apps.missing">App not installed?</span> <a class="app-store" href="#" target="_blank" rel="noopener" data-i18n="apps.getIos">Get it on the App Store</a></p>
+          </li>
+          <li class="app-item" data-app-item="yahoo">
+            <button class="app-row" type="button" data-app="yahoo">
+              <span class="app-tile app-tile--yahoo" aria-hidden="true">Y</span>
+              <span class="app-name">Yahoo Mail</span>
+              <span class="app-hint" data-i18n="apps.hint">Open</span>
+              <svg class="icon option-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
+            </button>
+            <p class="app-missing" hidden><span data-i18n="apps.missing">App not installed?</span> <a class="app-store" href="#" target="_blank" rel="noopener" data-i18n="apps.getIos">Get it on the App Store</a></p>
+          </li>
+          <li class="app-item" data-app-item="apple">
+            <button class="app-row" type="button" data-app="apple">
+              <span class="app-tile app-tile--apple" aria-hidden="true">A</span>
+              <span class="app-name">Apple Mail</span>
+              <span class="app-hint" data-i18n="apps.hint">Open</span>
+              <svg class="icon option-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
+            </button>
+            <p class="app-missing" hidden><span data-i18n="apps.missing">App not installed?</span> <a class="app-store" href="#" target="_blank" rel="noopener" data-i18n="apps.getIos">Get it on the App Store</a></p>
+          </li>
+          <li class="app-item" data-app-item="default">
+            <a class="app-row" href="mailto:mahmoudsaadaoui029@gmail.com?subject=Project%20inquiry" data-app="default">
+              <span class="app-tile app-tile--default" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 6.5A1.5 1.5 0 0 1 4.5 5h15A1.5 1.5 0 0 1 21 6.5v11a1.5 1.5 0 0 1-1.5 1.5h-15A1.5 1.5 0 0 1 3 17.5v-11Z" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="m3.5 6.5 8.5 6.5 8.5-6.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
+              <span class="app-name" data-i18n="apps.default">Default mail app</span>
+              <span class="app-hint" data-i18n="apps.defaultHint">This device</span>
+              <svg class="icon option-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
+            </a>
+          </li>
+        </ul>
       </div>
     </div>
   </dialog>
