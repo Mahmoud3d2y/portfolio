@@ -1,17 +1,19 @@
 # Mahmoud Saadaoui — Portfolio
 
-Personal portfolio for Mahmoud Saadaoui, web designer and front-end developer. Plain HTML, CSS and vanilla JavaScript: no frameworks, no dependencies, no build step.
+Personal portfolio for Mahmoud Saadaoui, independent freelance web designer and front-end developer based in Brazzaville, Congo. Plain HTML, CSS and vanilla JavaScript: no frameworks, no dependencies, no build step.
 
 - **Bilingual**: English is written in `index.html`; French lives in `js/main.js` (`FR` object). The FR/EN button remembers the visitor's choice, and French browsers get French by default.
-- **Light and dark themes**: follows the system setting, with a toggle in the header.
-- **Accessible**: skip link, visible focus, keyboard-operable mobile menu (Escape closes it), reduced-motion support, AA contrast in both themes.
+- **Greeting**: the hero says Mbote (Lingala), Bonjour and Hello once on load, then settles on the page language; visitors can switch it with the buttons below.
+- **Live clock**: shows the current time in Brazzaville.
+- **Accessible**: skip link, visible focus, keyboard-operable mobile menu (Escape closes it), reduced-motion support, AA text contrast.
 
 ## Structure
 
 ```
 index.html            The whole page
 css/style.css         All styles; colors, fonts and spacing are variables at the top
-js/main.js            Language, theme, menu, scroll effects, copy-email button
+js/main.js            Language, greeting, Brazzaville clock, menu, scroll effects, copy-email button
+assets/img/           Portrait (mahmoud.jpg)
 assets/work/          Project screenshots (960px and 1440px JPEG)
 assets/icons/         Favicon
 scripts/serve.mjs     Local preview server
@@ -24,8 +26,8 @@ Everything you need to change is marked with an `EDIT:` comment in `index.html`.
 | What | Where |
 | --- | --- |
 | Email address | `index.html` → Contact section (the link **and** the `data-email` on the copy button) — currently mahmoudsaadaoui029@gmail.com |
-| About text | `index.html` → About section, plus the French version in `js/main.js` (`about.p1`, `about.p2`) |
-| Availability status | `index.html` → hero (`hero.status`) |
+| About text | `index.html` → About section, plus the French version in `js/main.js` (`about.text`, `about.p1`, `about.p2`) |
+| Portrait | Replace `assets/img/mahmoud.jpg` (portrait format, dark background works best) |
 | Site address | `index.html` → `<link rel="canonical">` |
 | A new project | Copy one `<article class="case">` block, add its screenshots to `assets/work/`, and add French text keys in `js/main.js` |
 

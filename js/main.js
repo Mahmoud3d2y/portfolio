@@ -16,118 +16,70 @@
     set(k, v) { try { localStorage.setItem(k, v); } catch (e) { /* private mode */ } }
   };
 
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-  if (!reduceMotion.matches) root.classList.add('motion-ok');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!reduceMotion) root.classList.add('motion-ok');
 
   /* ---------- French translations ---------- */
   const FR = {
     'skip': 'Aller au contenu',
+    'nav.home': 'Accueil',
+    'nav.about': 'À propos',
     'nav.work': 'Projets',
     'nav.services': 'Services',
-    'nav.process': 'Méthode',
-    'nav.about': 'À propos',
     'nav.contact': 'Contact',
+    'nav.book': 'Prendre contact',
     'nav.menu': 'Menu',
     'nav.close': 'Fermer',
-    'theme.toDark': 'Passer au thème sombre',
-    'theme.toLight': 'Passer au thème clair',
 
-    'hero.index': 'Portfolio — Édition 2026',
-    'hero.role': 'Design web &amp; développement front-end',
-    'hero.status': 'Disponible pour de nouveaux projets',
-    'hero.lede': 'Je conçois et code à la main des sites qui donnent <em>aux entreprises sérieuses l’image qu’elles méritent</em> — rapides, accessibles et prêts en deux langues.',
-    'hero.cta': 'Lancer un projet',
-    'hero.cta2': 'Voir les projets',
-    'hero.tagsLabel': 'Spécialités',
-    'tag.1': 'Sites corporate',
-    'tag.2': 'Portfolios',
-    'tag.3': 'FR / EN',
-    'tag.4': 'WCAG 2.2',
+    'hero.side': 'Web designer freelance',
+    'hero.f1t': 'Solo',
+    'hero.f1': 'Ni agence, ni intermédiaire',
+    'hero.f2t': 'Partout',
+    'hero.f2': 'À distance ou sur place',
+    'hero.sr': 'Bonjour, je suis Mahmoud Saadaoui, web designer et développeur freelance.',
+    'hero.sub': 'Je suis Mahmoud, web designer &amp; développeur freelance.',
+    'hero.switchLabel': 'Dire bonjour en',
+    'hero.scroll': 'Défiler',
+    'hero.place': 'Brazzaville',
 
-    'work.eyebrow': 'Projets choisis',
-    'work.title': 'De vrais clients. Du vrai contenu. En ligne.',
-    'tinda.kind': 'Site corporate · Ingénierie · 2026',
-    'tinda.text': 'Un site corporate bilingue pour une entreprise d’ingénierie de Brazzaville active dans l’énergie, les réseaux, le génie civil et la maintenance industrielle. Le concept, <em>«' + NNBSP + 'Le Relevé' + NNBSP + '»</em>, emprunte aux plans de géomètre' + NNBSP + ': codes de section, photos de terrain légendées et carte de couverture nationale.',
-    'tinda.stack': 'HTML · Tokens CSS · JS natif · Build Node · AVIF · JSON-LD',
-    'tinda.caption': 'Fig. 01 — Page d’accueil, version française',
-    'fact.pages': 'Pages',
-    'fact.langs': 'Langues',
-    'fact.deps': 'Dépendances',
-    'fact.a11y': 'Accessibilité',
-    'fact.themes': 'Thèmes',
-    'fact.lightdark': 'Clair · Sombre',
-    'fact.build': 'Étape de build',
-    'fact.none': 'Aucune',
-    'fact.edit': 'Modification',
-    'fact.editVal': 'Repérée dans le code',
-    'mick.kind': 'Portfolio personnel · Aviation · 2026',
-    'mick.text': 'Un portfolio pour un spécialiste du nettoyage d’avions, pensé pour décrocher des contrats auprès des compagnies et des sociétés d’assistance au sol. Un curseur avant/après prouve la qualité, une galerie filtrable montre l’étendue du travail, et le bouton CV s’active tout seul dès que le fichier est ajouté.',
-    'mick.live': 'Voir le site en ligne',
-    'mick.caption': 'Fig. 02 — Page d’accueil, version anglaise',
+    'about.title': 'À propos',
+    'about.text': 'Je suis web designer et développeur front-end indépendant. Je ne travaille pour aucune agence ni aucune société' + NNBSP + ': chaque projet est conçu, rédigé et codé par moi, du premier échange jusqu’à la mise en ligne.',
+    'about.card': 'Une seule personne, du début à la fin. Vous parlez toujours à celui qui construit votre site.',
+    'about.p1': 'Basé à <strong>Brazzaville, au Congo</strong> pour le moment, et ouvert à travailler avec des clients partout, à distance ou sur place.',
+    'about.p2': 'Chaque site que je livre est rapide, accessible, bilingue si besoin, et assez simple pour que vous puissiez le mettre à jour vous-même.',
+
+    'work.eyebrow': 'Portfolio',
+    'work.title': 'Projets choisis',
+    'tinda.kind': 'Site corporate · 34 pages · FR / EN',
+    'mick.kind': 'Portfolio personnel · Aviation · EN / FR',
     'newTab': '(s’ouvre dans un nouvel onglet)',
-    'next.title': 'Votre projet pourrait être le prochain.',
-    'next.cta': 'Parlez-m’en',
 
     'services.eyebrow': 'Services',
-    'services.title': 'Ce que je peux construire pour vous.',
+    'services.title': 'Ce que je peux faire pour vous',
+    'services.lede': 'Des sites codés à la main, sans constructeur de pages ni abonnement. Le code vous appartient.',
     's1.title': 'Sites corporate',
-    's1.text': 'Des sites multipages qui expliquent ce que fait votre entreprise, pour qui, et comment travailler avec vous. Pages services, secteurs, équipe, parcours de contact pour clients et appels d’offres.',
+    's1.text': 'Des sites multipages qui expliquent ce que fait votre entreprise et comment travailler avec vous.',
     's2.title': 'Portfolios &amp; marques personnelles',
-    's2.text': 'Des sites d’une page pour les indépendants qui doivent inspirer confiance vite' + NNBSP + ': une offre claire, des preuves, un CV et un seul moyen évident de vous contacter.',
+    's2.text': 'Des sites d’une page pour les indépendants qui doivent inspirer confiance rapidement.',
     's3.title': 'Sites bilingues',
-    's3.text': 'Le français et l’anglais intégrés dès le départ, avec les bonnes balises de langue, des métadonnées traduites et la typographie française — pas un widget de traduction ajouté après coup.',
+    's3.text': 'Le français et l’anglais intégrés dès le départ, avec une vraie typographie française.',
     's4.title': 'Refontes &amp; audits',
-    's4.text': 'Un audit de votre site actuel (vitesse, accessibilité, bases du référencement), suivi d’une liste de corrections priorisées ou d’une refonte complète.',
+    's4.text': 'Un audit de votre site (vitesse, accessibilité, référencement), puis une liste de corrections ou une refonte.',
+    'tag.design': 'Design',
+    'tag.code': 'Code',
+    'tag.audit': 'Audit',
 
-    'principles.eyebrow': 'Ma méthode',
-    'principles.title': 'Quatre règles pour chaque site.',
-    'p1.title': 'Du vrai contenu, rien d’autre',
-    'p1.text': 'Les textes et les photos viennent de vous, pas de banques d’images. Ce qui n’est pas encore réalisé est indiqué comme prévu. Les visiteurs font confiance à ce qu’ils peuvent vérifier.',
-    'p2.title': 'Aucune dépendance',
-    'p2.text': 'Du HTML, du CSS et du JavaScript. Pas de constructeur de pages, pas d’abonnement, pas de framework à mettre à jour. Le site tourne sur n’importe quel hébergeur, aujourd’hui comme dans dix ans.',
-    'p3.title': 'Accessible par défaut',
-    'p3.text': 'Navigation au clavier, focus visible, contrastes lisibles, respect des préférences de mouvement et libellés corrects, vérifiés selon le WCAG 2.2 avant la mise en ligne.',
-    'p4.title': 'Pensé pour être transmis',
-    'p4.text': 'Chaque zone modifiable est repérée dans le code et expliquée dans un guide simple. Vous changez un numéro de téléphone sans avoir à m’appeler.',
-
-    'process.eyebrow': 'Méthode',
-    'process.title': 'Du premier appel à la mise en ligne.',
-    'st1.title': 'Écouter',
-    'st1.text': 'Nous parlons de votre activité, de vos clients et de ce que le site doit accomplir. Je rassemble vos brochures, photos et documents existants.',
-    'st2.title': 'Concevoir',
-    'st2.text': 'Un concept visuel construit autour de votre travail, avec la structure des pages et les textes, validé ensemble avant la moindre ligne de code.',
-    'st3.title': 'Développer',
-    'st3.text': 'Codé à la main, testé sur mobile et ordinateur, dans les deux langues, avec des contrôles d’accessibilité et de vitesse tout au long du projet.',
-    'st4.title': 'Lancer &amp; transmettre',
-    'st4.text': 'Je mets le site en ligne, configure les bases du référencement et vous remets un guide de modification. Le code vous appartient.',
-
-    'about.eyebrow': 'À propos',
-    'about.title': 'Un designer qui code. Un développeur attentif au rendu.',
-    'about.p1': 'Je suis Mahmoud Saadaoui, designer web et développeur front-end. Je travaille directement avec des dirigeants et des indépendants, d’une entreprise d’ingénierie au Congo à un spécialiste de l’aviation, et je prends en charge tout le projet' + NNBSP + ': concept, structure des contenus, design et code.',
-    'about.p2': 'Je soigne les détails que l’on oublie souvent' + NNBSP + ': la lecture d’un site en français, son comportement au clavier, sa vitesse sur une connexion mobile, et la capacité du client à le mettre à jour un an plus tard.',
-    'about.k1': 'Design',
-    'about.v1': 'Direction artistique, mise en page, typographie, design tokens',
-    'about.k2': 'Code',
-    'about.v2': 'HTML sémantique, CSS moderne, JavaScript natif, scripts de build Node',
-    'about.k3': 'Qualité',
-    'about.v3': 'WCAG 2.2, Core Web Vitals, métadonnées SEO, données structurées',
-    'about.k4': 'Langues',
-    'about.v4': 'Français, anglais',
-
-    'contact.eyebrow': 'Contact',
-    'contact.l1': 'Un projet' + NNBSP + '?',
-    'contact.l2': 'Parlons-en.',
-    'contact.text': 'Dites-moi ce que fait votre entreprise et ce que le site doit accomplir. Je réponds sous deux jours ouvrés avec mes questions, un calendrier indicatif et une fourchette de prix.',
+    'contact.eyebrow': 'Disponible pour de nouveaux projets',
+    'contact.title': 'Une idée' + NNBSP + '? Donnons-lui vie.',
+    'contact.text': 'Dites-moi ce que vous faites et ce que votre site doit accomplir. Où que vous soyez, nous pouvons travailler ensemble.',
+    'contact.cta': 'M’écrire',
     'contact.copy': 'Copier l’e-mail',
     'contact.copied': 'Adresse copiée',
-    'footer.made': 'Conçu et codé à la main. Sans framework.',
-    'footer.top': 'Retour en haut ↑'
+    'footer.place': 'Brazzaville, Congo — disponible partout'
   };
 
   const EN_EXTRA = {
     'nav.close': 'Close',
-    'theme.toDark': 'Switch to dark theme',
-    'theme.toLight': 'Switch to light theme',
     'contact.copied': 'Email copied'
   };
 
@@ -142,7 +94,6 @@
     ((navigator.language || '').toLowerCase().startsWith('fr') ? 'fr' : 'en');
 
   const t = key => (lang === 'fr' ? FR : EN)[key] || EN[key] || '';
-
   const langBtn = document.getElementById('lang-toggle');
 
   function applyLang() {
@@ -152,14 +103,16 @@
       const v = dict[el.dataset.i18n];
       if (v != null && el.innerHTML !== v) el.innerHTML = v;
     });
-    document.querySelectorAll('.step-num').forEach((el, i) => {
-      el.textContent = (lang === 'fr' ? 'Étape ' : 'Step ') + (i + 1);
+    ariaEls.forEach(el => {
+      const v = dict[el.dataset.i18nAria];
+      if (v) el.setAttribute('aria-label', v);
     });
     const other = lang === 'fr' ? 'en' : 'fr';
     langBtn.textContent = other.toUpperCase();
     langBtn.lang = other;
     langBtn.setAttribute('aria-label', other === 'fr' ? 'Passer en français' : 'Switch to English');
-    updateThemeLabel();
+    menuBtn.querySelector('.menu-label').textContent = t(nav.classList.contains('is-open') ? 'nav.close' : 'nav.menu');
+    if (!greetingPicked) setGreeting(homeWord(), false);
   }
 
   langBtn.addEventListener('click', () => {
@@ -168,29 +121,72 @@
     applyLang();
   });
 
-  /* ---------- Theme ---------- */
-  const themeBtn = document.getElementById('theme-toggle');
-  const darkQuery = window.matchMedia('(prefers-color-scheme: dark)');
-  const isDark = () => {
-    const set = root.getAttribute('data-theme');
-    return set ? set === 'dark' : darkQuery.matches;
-  };
-  function updateThemeLabel() {
-    themeBtn.setAttribute('aria-label', t(isDark() ? 'theme.toLight' : 'theme.toDark'));
+  /* ---------- Greeting: Mbote (Lingala) · Bonjour · Hello ---------- */
+  const greeting = document.getElementById('greeting');
+  const switchBtns = [...document.querySelectorAll('.hello-switch button')];
+  const homeWord = () => (lang === 'fr' ? 'Bonjour' : 'Hello');
+  let greetingPicked = false;
+  let introTimers = [];
+  let swapTimer;
+
+  function setGreeting(word, animate) {
+    switchBtns.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.word === word)));
+    const lng = switchBtns.find(b => b.dataset.word === word)?.lang || 'en';
+    if (greeting.textContent === word) return;
+    clearTimeout(swapTimer);
+    if (!animate || reduceMotion) {
+      greeting.textContent = word;
+      greeting.lang = lng;
+      greeting.classList.remove('is-out');
+      return;
+    }
+    greeting.classList.add('is-out');
+    swapTimer = setTimeout(() => {
+      greeting.textContent = word;
+      greeting.lang = lng;
+      greeting.classList.remove('is-out');
+    }, 240);
   }
-  themeBtn.addEventListener('click', () => {
-    const next = isDark() ? 'light' : 'dark';
-    root.setAttribute('data-theme', next);
-    store.set('ms-theme', next);
-    updateThemeLabel();
-  });
-  darkQuery.addEventListener('change', updateThemeLabel);
+
+  switchBtns.forEach(btn => btn.addEventListener('click', () => {
+    greetingPicked = true;
+    introTimers.forEach(clearTimeout);
+    setGreeting(btn.dataset.word, true);
+  }));
+
+  // One short pass on load (under 5 seconds), ending on the page language
+  function playIntro() {
+    if (reduceMotion) return;
+    const end = homeWord();
+    const seq = ['Mbote'].concat(end === 'Hello' ? ['Bonjour', 'Hello'] : ['Hello', 'Bonjour']);
+    setGreeting(seq[0], false);
+    seq.slice(1).forEach((w, i) => {
+      introTimers.push(setTimeout(() => { if (!greetingPicked) setGreeting(w, true); }, 1300 * (i + 1)));
+    });
+  }
+
+  /* ---------- Brazzaville clock ---------- */
+  const clock = document.getElementById('clock');
+  let fmt;
+  try {
+    fmt = new Intl.DateTimeFormat('en-GB', { timeZone: 'Africa/Brazzaville', hour: '2-digit', minute: '2-digit', hourCycle: 'h23' });
+  } catch (e) { fmt = null; }
+  function tick() {
+    if (!fmt) { clock.parentElement.hidden = true; return; }
+    const now = new Date();
+    clock.textContent = fmt.format(now) + ' GMT+1';
+    clock.dateTime = now.toISOString();
+  }
+  tick();
+  setInterval(tick, 15000);
 
   /* ---------- Mobile menu ---------- */
   const menuBtn = document.getElementById('menu-toggle');
   const nav = document.getElementById('primary-nav');
+  const header = document.querySelector('.site-header');
   function setMenu(open) {
     nav.classList.toggle('is-open', open);
+    header.classList.toggle('menu-open', open);
     menuBtn.setAttribute('aria-expanded', String(open));
     menuBtn.querySelector('.menu-label').textContent = t(open ? 'nav.close' : 'nav.menu');
     document.body.style.overflow = open ? 'hidden' : '';
@@ -200,43 +196,32 @@
   document.addEventListener('keydown', e => {
     if (e.key === 'Escape' && nav.classList.contains('is-open')) { setMenu(false); menuBtn.focus(); }
   });
-  window.matchMedia('(min-width: 961px)').addEventListener('change', e => { if (e.matches) setMenu(false); });
+  window.matchMedia('(min-width: 861px)').addEventListener('change', e => { if (e.matches) setMenu(false); });
 
-  /* ---------- Hero letters ---------- */
-  document.querySelectorAll('[data-split]').forEach((el, lineIndex) => {
-    const text = el.textContent.trim();
-    el.textContent = '';
-    [...text].forEach((ch, i) => {
-      const s = document.createElement('span');
-      s.className = 'char';
-      s.style.setProperty('--i', i + lineIndex * 6);
-      s.textContent = ch;
-      el.appendChild(s);
-    });
-  });
-
-  /* ---------- Header state, progress, active link ---------- */
+  /* ---------- Header: scrolled state + light/dark text over sections ---------- */
+  const darkEls = [...document.querySelectorAll('[data-dark]')];
   const navLinks = [...nav.querySelectorAll('a[href^="#"]')];
-  const header = document.querySelector('.site-header');
-  const bar = document.querySelector('.progress span');
   let ticking = false;
   function onScroll() {
     const y = window.scrollY;
-    const max = document.documentElement.scrollHeight - window.innerHeight;
+    const probe = header.offsetHeight / 2;
     header.classList.toggle('is-scrolled', y > 8);
-    // The last section can be too short to reach the spy band: mark it at the page end
+    header.classList.toggle('on-dark', darkEls.some(el => {
+      const r = el.getBoundingClientRect();
+      return r.top <= probe && r.bottom >= probe;
+    }));
+    const max = document.documentElement.scrollHeight - window.innerHeight;
     if (max > 0 && y >= max - 4) {
       navLinks.forEach((a, i) => i === navLinks.length - 1 ? a.setAttribute('aria-current', 'true') : a.removeAttribute('aria-current'));
     }
-    bar.style.setProperty('--p', max > 0 ? (y / max).toFixed(4) : 0);
     ticking = false;
   }
   window.addEventListener('scroll', () => {
     if (!ticking) { requestAnimationFrame(onScroll); ticking = true; }
   }, { passive: true });
+  window.addEventListener('resize', onScroll);
   onScroll();
 
-  const sections = navLinks.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
   if ('IntersectionObserver' in window) {
     const spy = new IntersectionObserver(entries => {
       entries.forEach(entry => {
@@ -247,15 +232,14 @@
         });
       });
     }, { rootMargin: '-45% 0px -50% 0px' });
-    sections.forEach(s => spy.observe(s));
+    navLinks.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean).forEach(s => spy.observe(s));
 
-    /* Scroll reveal */
+    /* Scroll reveal, staggered within each parent */
     const groups = new Map();
     document.querySelectorAll('.reveal').forEach(el => {
-      const parent = el.parentElement;
-      const n = groups.get(parent) || 0;
+      const n = groups.get(el.parentElement) || 0;
       el.style.setProperty('--stagger', n);
-      groups.set(parent, n + 1);
+      groups.set(el.parentElement, n + 1);
     });
     const io = new IntersectionObserver(entries => {
       entries.forEach(entry => {
@@ -299,4 +283,5 @@
   document.getElementById('year').textContent = new Date().getFullYear();
 
   applyLang();
+  playIntro();
 })();
