@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mahmoud Saadaoui — Web Designer &amp; Front-end Developer</title>
+  <meta name="description" content="Mahmoud Saadaoui designs and builds fast, accessible, bilingual websites for businesses and independent professionals. Hand-coded, no frameworks, easy to hand over.">
+  <meta name="author" content="Mahmoud Saadaoui">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#F3F0E8" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0F0F0D" media="(prefers-color-scheme: dark)">
+
+  <!-- EDIT: replace with the final address of the site once it is online -->
+  <link rel="canonical" href="https://mahmoud3d2y.github.io/portfolio/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Mahmoud Saadaoui — Web Designer & Front-end Developer">
+  <meta property="og:description" content="Fast, accessible, bilingual websites, designed and hand-coded.">
+  <meta property="og:image" content="assets/work/tinda-1440.jpg">
+
+  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=JetBrains+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Apply saved theme before paint to avoid a flash -->
+  <script>
+    try {
+      var t = localStorage.getItem('ms-theme');
+      if (t) document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+    document.documentElement.classList.add('js');
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Mahmoud Saadaoui",
+    "jobTitle": "Web Designer & Front-end Developer",
+    "sameAs": ["https://github.com/Mahmoud3d2y"]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main" data-i18n="skip">Skip to content</a>
+  <div class="progress" aria-hidden="true"><span></span></div>
+
+  <header class="site-header" id="top">
+    <div class="wrap header-inner">
+      <a class="brand" href="#top" aria-label="Mahmoud Saadaoui — home">
+        <span class="brand-mark" aria-hidden="true">MS</span>
+        <span class="brand-name">Mahmoud Saadaoui</span>
+      </a>
+
+      <nav class="primary-nav" id="primary-nav" aria-label="Primary">
+        <ul>
+          <li><a href="#work" data-i18n="nav.work">Work</a></li>
+          <li><a href="#services" data-i18n="nav.services">Services</a></li>
+          <li><a href="#process" data-i18n="nav.process">Process</a></li>
+          <li><a href="#about" data-i18n="nav.about">About</a></li>
+          <li class="nav-cta"><a href="#contact" data-i18n="nav.contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-tools">
+        <button class="tool-btn" type="button" id="lang-toggle" aria-label="Passer en français" lang="fr">FR</button>
+        <button class="tool-btn" type="button" id="theme-toggle" aria-label="Switch to dark theme" data-i18n-aria="theme.toDark">
+          <svg class="icon icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11Z"/></svg>
+          <svg class="icon icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        </button>
+        <button class="tool-btn menu-btn" type="button" id="menu-toggle" aria-expanded="false" aria-controls="primary-nav">
+          <span class="menu-label" data-i18n="nav.menu">Menu</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ============ HERO ============ -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="wrap">
+        <div class="hero-meta mono">
+          <span class="hide-sm" data-i18n="hero.index">Portfolio — Edition 2026</span>
+          <span class="hide-sm" data-i18n="hero.role">Web design &amp; front-end development</span>
+          <!-- EDIT: change the text below if you are not taking new projects -->
+          <span class="status"><span class="status-dot" aria-hidden="true"></span><span data-i18n="hero.status">Booking projects now</span></span>
+        </div>
+
+        <h1 class="hero-title" id="hero-title" aria-label="Mahmoud Saadaoui">
+          <span class="hero-line" aria-hidden="true" data-split>Mahmoud</span>
+          <span class="hero-line hero-line--offset" aria-hidden="true">
+            <svg class="hero-asterisk" viewBox="0 0 100 100" aria-hidden="true"><path d="M50 4v92M4 50h92M17.5 17.5l65 65M82.5 17.5l-65 65"/></svg><span data-split>Saadaoui</span>
+          </span>
+        </h1>
+
+        <div class="hero-grid">
+          <p class="hero-lede" data-i18n="hero.lede">I design and hand-code websites that make <em>serious businesses look as serious as they are</em> — fast, accessible, and ready in two languages.</p>
+          <div class="hero-side">
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#contact">
+                <span data-i18n="hero.cta">Start a project</span>
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </a>
+              <a class="btn btn-ghost" href="#work" data-i18n="hero.cta2">See selected work</a>
+            </div>
+            <ul class="hero-tags mono" aria-label="Specialities" data-i18n-aria="hero.tagsLabel">
+              <li data-i18n="tag.1">Corporate sites</li>
+              <li data-i18n="tag.2">Portfolios</li>
+              <li data-i18n="tag.3">FR / EN</li>
+              <li data-i18n="tag.4">WCAG 2.2</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ WORK ============ -->
+    <section class="section work" id="work" aria-labelledby="work-title">
+      <div class="wrap">
+        <header class="section-head">
+          <p class="eyebrow mono"><span>01</span> <span data-i18n="work.eyebrow">Selected work</span></p>
+          <h2 class="section-title" id="work-title" data-i18n="work.title">Real clients. Real content. Shipped.</h2>
+        </header>
+
+        <!-- Case 01 -->
+        <article class="case reveal" aria-labelledby="case-tinda">
+          <div class="case-info">
+            <p class="case-num mono">01 / 02</p>
+            <h3 class="case-title" id="case-tinda">TINDA Multiservices Congo</h3>
+            <p class="case-kind mono" data-i18n="tinda.kind">Corporate website · Engineering · 2026</p>
+            <p class="case-text" data-i18n="tinda.text">A bilingual corporate site for an engineering company in Brazzaville working in energy, networks, civil engineering and industrial maintenance. The concept, <em>“Le Relevé”</em>, borrows from survey drawings: section codes, captioned field photography and a national coverage map.</p>
+            <dl class="facts">
+              <div><dt class="mono" data-i18n="fact.pages">Pages</dt><dd>34</dd></div>
+              <div><dt class="mono" data-i18n="fact.langs">Languages</dt><dd>FR · EN</dd></div>
+              <div><dt class="mono" data-i18n="fact.deps">Dependencies</dt><dd>0</dd></div>
+              <div><dt class="mono" data-i18n="fact.a11y">Accessibility</dt><dd>WCAG 2.2 AA</dd></div>
+            </dl>
+            <p class="case-stack mono" data-i18n="tinda.stack">HTML · CSS tokens · Vanilla JS · Node build · AVIF · JSON-LD</p>
+          </div>
+          <figure class="case-media">
+            <div class="browser">
+              <div class="browser-bar" aria-hidden="true"><i></i><i></i><i></i><span>tinda-congo</span></div>
+              <img src="assets/work/tinda-1440.jpg" srcset="assets/work/tinda-960.jpg 960w, assets/work/tinda-1440.jpg 1440w" sizes="(min-width: 960px) 60vw, 100vw" width="1440" height="900" loading="lazy" decoding="async" alt="TINDA home page: a dark navy hero reading “Bâtir l’infrastructure du Congo de demain” beside a captioned photo of a lit urban canal.">
+            </div>
+            <figcaption class="mono" data-i18n="tinda.caption">Fig. 01 — Home page, French version</figcaption>
+          </figure>
+        </article>
+
+        <!-- Case 02 -->
+        <article class="case case--flip reveal" aria-labelledby="case-mick">
+          <div class="case-info">
+            <p class="case-num mono">02 / 02</p>
+            <h3 class="case-title" id="case-mick">Mikael Abuye</h3>
+            <p class="case-kind mono" data-i18n="mick.kind">Personal portfolio · Aviation services · 2026</p>
+            <p class="case-text" data-i18n="mick.text">A portfolio for an aircraft cleaning specialist, built to win contracts with airlines and ground-handling firms. A before/after slider proves the quality, a filterable gallery shows the range, and a CV button switches on by itself once the file is added.</p>
+            <dl class="facts">
+              <div><dt class="mono" data-i18n="fact.langs">Languages</dt><dd>EN · FR</dd></div>
+              <div><dt class="mono" data-i18n="fact.themes">Themes</dt><dd data-i18n="fact.lightdark">Light · Dark</dd></div>
+              <div><dt class="mono" data-i18n="fact.build">Build step</dt><dd data-i18n="fact.none">None</dd></div>
+              <div><dt class="mono" data-i18n="fact.edit">Editing</dt><dd data-i18n="fact.editVal">Marked in code</dd></div>
+            </dl>
+            <a class="link-arrow" href="https://mahmoud3d2y.github.io/mick-portfolio/" target="_blank" rel="noopener">
+              <span data-i18n="mick.live">Visit the live site</span>
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
+              <span class="sr-only" data-i18n="newTab">(opens in a new tab)</span>
+            </a>
+          </div>
+          <figure class="case-media">
+            <div class="browser">
+              <div class="browser-bar" aria-hidden="true"><i></i><i></i><i></i><span>mahmoud3d2y.github.io/mick-portfolio</span></div>
+              <img src="assets/work/mick-1440.jpg" srcset="assets/work/mick-960.jpg 960w, assets/work/mick-1440.jpg 1440w" sizes="(min-width: 960px) 60vw, 100vw" width="1440" height="900" loading="lazy" decoding="async" alt="Mikael Abuye home page: “Every aircraft, spotless and flight-ready” set over a dusk photo of an airport apron.">
+            </div>
+            <figcaption class="mono" data-i18n="mick.caption">Fig. 02 — Home page, English version</figcaption>
+          </figure>
+        </article>
+
+        <!-- Next slot -->
+        <a class="case-next reveal" href="#contact">
+          <span class="case-num mono">03 / —</span>
+          <span class="case-next-title" data-i18n="next.title">Your project could be next.</span>
+          <span class="case-next-cta mono"><span data-i18n="next.cta">Tell me about it</span>
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </span>
+        </a>
+      </div>
+    </section>
+
+    <!-- ============ SERVICES ============ -->
+    <section class="section services" id="services" aria-labelledby="services-title">
+      <div class="wrap">
+        <header class="section-head">
+          <p class="eyebrow mono"><span>02</span> <span data-i18n="services.eyebrow">Services</span></p>
+          <h2 class="section-title" id="services-title" data-i18n="services.title">What I can build for you.</h2>
+        </header>
+
+        <ol class="service-list">
+          <li class="service reveal">
+            <span class="service-num mono">A</span>
+            <h3 class="service-title" data-i18n="s1.title">Corporate websites</h3>
+            <p data-i18n="s1.text">Multi-page sites that explain what your company does, who it serves and how to start working with you. Service pages, sectors, team, contact paths for clients and tenders.</p>
+          </li>
+          <li class="service reveal">
+            <span class="service-num mono">B</span>
+            <h3 class="service-title" data-i18n="s2.title">Portfolios &amp; personal brands</h3>
+            <p data-i18n="s2.text">One-page sites for independent professionals who need to look credible fast: a clear offer, proof of work, a CV and one obvious way to get in touch.</p>
+          </li>
+          <li class="service reveal">
+            <span class="service-num mono">C</span>
+            <h3 class="service-title" data-i18n="s3.title">Bilingual sites</h3>
+            <p data-i18n="s3.text">French and English built in from day one, with proper language tags, translated metadata and French typography rules, not a translation widget bolted on later.</p>
+          </li>
+          <li class="service reveal">
+            <span class="service-num mono">D</span>
+            <h3 class="service-title" data-i18n="s4.title">Redesigns &amp; audits</h3>
+            <p data-i18n="s4.text">A review of your current site for speed, accessibility and search basics, followed by a prioritised fix list or a full rebuild.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============ PRINCIPLES (dark band) ============ -->
+    <section class="section principles" aria-labelledby="principles-title">
+      <div class="wrap">
+        <header class="section-head">
+          <p class="eyebrow mono"><span>03</span> <span data-i18n="principles.eyebrow">How I work</span></p>
+          <h2 class="section-title" id="principles-title" data-i18n="principles.title">Four rules every site follows.</h2>
+        </header>
+        <div class="principle-grid">
+          <div class="principle reveal">
+            <p class="principle-key">01</p>
+            <h3 data-i18n="p1.title">Real content only</h3>
+            <p data-i18n="p1.text">Copy and photos come from you, not stock libraries. Anything not yet done is labelled as planned. Visitors trust what they can verify.</p>
+          </div>
+          <div class="principle reveal">
+            <p class="principle-key">02</p>
+            <h3 data-i18n="p2.title">No lock-in</h3>
+            <p data-i18n="p2.text">Plain HTML, CSS and JavaScript. No page builder, no subscription, no framework to update. It runs on any host, today and in ten years.</p>
+          </div>
+          <div class="principle reveal">
+            <p class="principle-key">03</p>
+            <h3 data-i18n="p3.title">Accessible by default</h3>
+            <p data-i18n="p3.text">Keyboard navigation, visible focus, readable contrast, reduced-motion support and proper labels, checked against WCAG 2.2 before launch.</p>
+          </div>
+          <div class="principle reveal">
+            <p class="principle-key">04</p>
+            <h3 data-i18n="p4.title">Built to hand over</h3>
+            <p data-i18n="p4.text">Every editable spot is marked in the code and explained in a plain-language guide, so you can change a phone number without calling me.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PROCESS ============ -->
+    <section class="section process" id="process" aria-labelledby="process-title">
+      <div class="wrap">
+        <header class="section-head">
+          <p class="eyebrow mono"><span>04</span> <span data-i18n="process.eyebrow">Process</span></p>
+          <h2 class="section-title" id="process-title" data-i18n="process.title">From first call to launch.</h2>
+        </header>
+        <ol class="steps">
+          <li class="step reveal">
+            <span class="step-num mono">Step 1</span>
+            <h3 data-i18n="st1.title">Listen</h3>
+            <p data-i18n="st1.text">We talk about your business, your clients and what the site must achieve. I gather your brochures, photos and existing material.</p>
+          </li>
+          <li class="step reveal">
+            <span class="step-num mono">Step 2</span>
+            <h3 data-i18n="st2.title">Design</h3>
+            <p data-i18n="st2.text">A visual concept built around your work, with page structure and copy, reviewed together before any code is written.</p>
+          </li>
+          <li class="step reveal">
+            <span class="step-num mono">Step 3</span>
+            <h3 data-i18n="st3.title">Build</h3>
+            <p data-i18n="st3.text">Hand-coded, tested on phones and desktops, in both languages, with accessibility and speed checks along the way.</p>
+          </li>
+          <li class="step reveal">
+            <span class="step-num mono">Step 4</span>
+            <h3 data-i18n="st4.title">Launch &amp; hand over</h3>
+            <p data-i18n="st4.text">I put the site online, set up search basics and give you an editing guide. The code is yours.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============ ABOUT ============ -->
+    <section class="section about" id="about" aria-labelledby="about-title">
+      <div class="wrap about-grid">
+        <header class="section-head">
+          <p class="eyebrow mono"><span>05</span> <span data-i18n="about.eyebrow">About</span></p>
+          <h2 class="section-title" id="about-title" data-i18n="about.title">Designer who codes. Developer who cares how it looks.</h2>
+        </header>
+        <div class="about-body">
+          <!-- EDIT: rewrite these two paragraphs in your own words (where you are based, your background, what you enjoy) -->
+          <p class="about-lede" data-i18n="about.p1">I’m Mahmoud Saadaoui, a web designer and front-end developer. I work directly with business owners and independent professionals, from an engineering firm in Congo to an aviation specialist, and I handle the whole job myself: concept, copy structure, design and code.</p>
+          <p data-i18n="about.p2">I care about the details most people skip: how a site reads in French, how it behaves with a keyboard, how fast it loads on a mobile connection, and whether the client can still update it a year later.</p>
+          <dl class="about-list">
+            <div><dt class="mono" data-i18n="about.k1">Design</dt><dd data-i18n="about.v1">Art direction, layout, typography, design tokens</dd></div>
+            <div><dt class="mono" data-i18n="about.k2">Code</dt><dd data-i18n="about.v2">Semantic HTML, modern CSS, vanilla JavaScript, Node build scripts</dd></div>
+            <div><dt class="mono" data-i18n="about.k3">Quality</dt><dd data-i18n="about.v3">WCAG 2.2, Core Web Vitals, SEO metadata, structured data</dd></div>
+            <div><dt class="mono" data-i18n="about.k4">Languages</dt><dd data-i18n="about.v4">French, English</dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section class="contact" id="contact" aria-labelledby="contact-title">
+      <div class="wrap">
+        <p class="eyebrow mono"><span>06</span> <span data-i18n="contact.eyebrow">Contact</span></p>
+        <h2 class="contact-title" id="contact-title">
+          <span data-i18n="contact.l1">Have a project?</span>
+          <span class="contact-title-2" data-i18n="contact.l2">Let’s talk.</span>
+        </h2>
+        <div class="contact-grid">
+          <p class="contact-text" data-i18n="contact.text">Tell me what your business does and what you need the site to do. I reply within two working days with questions, a rough timeline and a price range.</p>
+          <div class="contact-actions">
+            <!-- EDIT: your email appears in BOTH places below (link and copy button) -->
+            <a class="email-link" href="mailto:mahmoudsaadaoui029@gmail.com" id="email-link">mahmoudsaadaoui029@gmail.com</a>
+            <div class="contact-buttons">
+              <button class="btn btn-ghost btn-sm" type="button" id="copy-email" data-email="mahmoudsaadaoui029@gmail.com">
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="1"/><path d="M5 15V5a1 1 0 0 1 1-1h10"/></svg>
+                <span data-i18n="contact.copy">Copy email</span>
+              </button>
+              <a class="btn btn-ghost btn-sm" href="https://github.com/Mahmoud3d2y" target="_blank" rel="noopener">
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg>
+                GitHub<span class="sr-only" data-i18n="newTab">(opens in a new tab)</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner mono">
+      <span>© <span id="year">2026</span> Mahmoud Saadaoui</span>
+      <span data-i18n="footer.made">Designed and hand-coded. No frameworks.</span>
+      <a href="#top" data-i18n="footer.top">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <div class="toast mono" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>
