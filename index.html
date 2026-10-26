@@ -236,22 +236,64 @@
 
   <footer class="site-footer" data-dark>
     <div class="wrap">
-      <div class="footer-top">
-        <ul class="footer-nav">
-          <li><a href="#top" data-i18n="nav.home">Home</a></li>
-          <li><a href="#about" data-i18n="nav.about">About</a></li>
-          <li><a href="#work" data-i18n="nav.work">Work</a></li>
-          <li><a href="#services" data-i18n="nav.services">Services</a></li>
-          <li><a href="https://wa.me/242061198139" target="_blank" rel="noopener" data-whatsapp>WhatsApp<span class="sr-only" data-i18n="newTab">(opens in a new tab)</span></a></li>
-          <li><a href="https://github.com/Mahmoud3d2y" target="_blank" rel="noopener">GitHub<span class="sr-only" data-i18n="newTab">(opens in a new tab)</span></a></li>
-        </ul>
-        <!-- EDIT: your email appears in several places on this page (search for mahmoudsaadaoui029) -->
-        <a class="footer-email" href="mailto:mahmoudsaadaoui029@gmail.com">mahmoudsaadaoui029@gmail.com</a>
+      <div class="footer-hero">
+        <div class="footer-pitch">
+          <p class="footer-kicker"><span class="dot" aria-hidden="true"></span><span data-i18n="footer.kicker">Currently taking new projects</span></p>
+          <a class="footer-cta" href="mailto:mahmoudsaadaoui029@gmail.com?subject=Project%20inquiry" data-contact>
+            <span data-i18n="footer.cta">Let’s build something</span>
+            <span class="footer-cta-arrow" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
+          </a>
+        </div>
+
+        <div class="timecard" aria-label="Time zones" data-i18n-aria="footer.tzLabel">
+          <div class="timecard-row">
+            <span class="timecard-label" data-i18n="footer.me">Brazzaville</span>
+            <time class="timecard-time" id="tc-me">--:--</time>
+          </div>
+          <div class="timecard-line" aria-hidden="true"><span class="timecard-dot timecard-dot--me"></span><span class="timecard-dot timecard-dot--you" id="tc-dot"></span></div>
+          <div class="timecard-row">
+            <span class="timecard-label" data-i18n="footer.you">Your time</span>
+            <time class="timecard-time timecard-time--you" id="tc-you">--:--</time>
+          </div>
+          <p class="timecard-note" id="tc-note"></p>
+        </div>
       </div>
-      <div class="footer-bottom">
-        <span>© <span id="year">2026</span> Mahmoud Saadaoui</span>
-        <span data-i18n="footer.place">Brazzaville, Congo — working worldwide</span>
+
+      <div class="footer-cols">
+        <nav aria-label="Footer" data-i18n-aria="footer.navLabel">
+          <p class="footer-head" data-i18n="footer.h1">Menu</p>
+          <ul>
+            <li><a href="#top" data-i18n="nav.home">Home</a></li>
+            <li><a href="#about" data-i18n="nav.about">About</a></li>
+            <li><a href="#work" data-i18n="nav.work">Work</a></li>
+            <li><a href="#services" data-i18n="nav.services">Services</a></li>
+          </ul>
+        </nav>
+        <div>
+          <p class="footer-head" data-i18n="footer.h2">Contact</p>
+          <ul>
+            <li><a href="https://wa.me/242061198139" target="_blank" rel="noopener" data-whatsapp>WhatsApp<span class="sr-only" data-i18n="newTab">(opens in a new tab)</span></a></li>
+            <!-- EDIT: your email appears in several places on this page (search for mahmoudsaadaoui029) -->
+            <li><a href="mailto:mahmoudsaadaoui029@gmail.com" data-contact>Gmail</a></li>
+            <li><a href="https://github.com/Mahmoud3d2y" target="_blank" rel="noopener">GitHub<span class="sr-only" data-i18n="newTab">(opens in a new tab)</span></a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer-head" data-i18n="footer.h3">Based in</p>
+          <p class="footer-place" data-i18n="footer.place">Brazzaville, Republic of the Congo.<br>Open to remote and on-site work, anywhere.</p>
+        </div>
+        <a class="to-top" href="#top">
+          <span data-i18n="footer.top">Back to top</span>
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg>
+        </a>
       </div>
+    </div>
+
+    <div class="wordmark" aria-hidden="true"><span class="wordmark-inner" id="wordmark">Saadaoui</span></div>
+
+    <div class="wrap footer-bottom">
+      <span>© <span id="year">2026</span> Mahmoud Saadaoui</span>
+      <span data-i18n="footer.made">Designed &amp; hand-coded. No templates.</span>
     </div>
   </footer>
 

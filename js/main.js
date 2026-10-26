@@ -83,14 +83,31 @@
     'sheet.other': 'Autre application mail',
     'msg.text': 'Bonjour Mahmoud, j’ai vu votre portfolio et j’aimerais parler d’un projet.',
     'msg.subject': 'Demande de projet',
-    'footer.place': 'Brazzaville, Congo — disponible partout'
+    'footer.kicker': 'Disponible pour de nouveaux projets',
+    'footer.cta': 'Construisons quelque chose',
+    'footer.tzLabel': 'Fuseaux horaires',
+    'footer.me': 'Brazzaville',
+    'footer.you': 'Chez vous',
+    'footer.navLabel': 'Pied de page',
+    'footer.h1': 'Menu',
+    'footer.h2': 'Contact',
+    'footer.h3': 'Basé à',
+    'footer.place': 'Brazzaville, République du Congo.<br>Ouvert au travail à distance ou sur place, partout.',
+    'footer.top': 'Retour en haut',
+    'footer.made': 'Conçu &amp; codé à la main. Sans template.',
+    'tz.same': 'Même heure que vous — facile de caler un appel.',
+    'tz.ahead': 'J’ai {n} d’avance sur vous.',
+    'tz.behind': 'J’ai {n} de retard sur vous.'
   };
 
   const EN_EXTRA = {
     'nav.close': 'Close',
     'contact.copied': 'Email copied',
     'msg.text': 'Hello Mahmoud, I saw your portfolio and would like to talk about a project.',
-    'msg.subject': 'Project inquiry'
+    'msg.subject': 'Project inquiry',
+    'tz.same': 'Same time as you — easy to set up a call.',
+    'tz.ahead': 'I’m {n} ahead of you.',
+    'tz.behind': 'I’m {n} behind you.'
   };
 
   /* EDIT: contact details used by the chooser and WhatsApp links */
@@ -127,6 +144,7 @@
     menuBtn.querySelector('.menu-label').textContent = t(nav.classList.contains('is-open') ? 'nav.close' : 'nav.menu');
     if (!greetingPicked) setGreeting(homeWord(), false);
     updateContactLinks();
+    if (typeof tick === 'function' && fmt !== undefined) tick();
   }
 
   /* Prefill WhatsApp and Gmail with a message in the page language */
@@ -201,6 +219,32 @@
     const now = new Date();
     clock.textContent = fmt.format(now) + ' GMT+1';
     clock.dateTime = now.toISOString();
+    updateTimecard(now);
+  }
+
+  /* ---------- Footer time card: Brazzaville (UTC+1, no DST) vs the visitor ---------- */
+  const BZV_OFFSET = 60; // minutes ahead of UTC
+  const tcMe = document.getElementById('tc-me');
+  const tcYou = document.getElementById('tc-you');
+  const tcNote = document.getElementById('tc-note');
+  const tcLine = document.querySelector('.timecard-line');
+  const two = n => String(n).padStart(2, '0');
+  function updateTimecard(now) {
+    const youOffset = -now.getTimezoneOffset();
+    const utcMin = now.getUTCHours() * 60 + now.getUTCMinutes();
+    const meMin = (utcMin + BZV_OFFSET + 1440) % 1440;
+    const youMin = (utcMin + youOffset + 1440) % 1440;
+    tcMe.textContent = two(Math.floor(meMin / 60)) + ':' + two(meMin % 60);
+    tcYou.textContent = two(Math.floor(youMin / 60)) + ':' + two(youMin % 60);
+    // Dots sit on a 24-hour line
+    tcLine.querySelector('.timecard-dot--me').style.setProperty('--pos', (meMin / 1440).toFixed(4));
+    tcLine.querySelector('.timecard-dot--you').style.setProperty('--pos', (youMin / 1440).toFixed(4));
+    const diff = BZV_OFFSET - youOffset;
+    if (diff === 0) { tcNote.textContent = t('tz.same'); return; }
+    const abs = Math.abs(diff);
+    const h = Math.floor(abs / 60), m = abs % 60;
+    const n = (h ? h + ' h' : '') + (h && m ? ' ' : '') + (m ? m + ' min' : '');
+    tcNote.textContent = t(diff > 0 ? 'tz.ahead' : 'tz.behind').replace('{n}', n);
   }
   tick();
   setInterval(tick, 15000);
@@ -324,6 +368,63 @@
     closeSheet();
     showToast(t('contact.copied') + ' — ' + email);
   });
+
+  /* ---------- Footer wordmark: fit to width, letters rise toward the cursor ---------- */
+  const mark = document.getElementById('wordmark');
+  const markBox = mark.parentElement;
+  const chars = [...mark.textContent].map((c, i) => {
+    const sp = document.createElement('span');
+    sp.className = 'ch';
+    sp.textContent = c;
+    return sp;
+  });
+  mark.textContent = '';
+  chars.forEach(c => mark.appendChild(c));
+
+  function fitMark() {
+    markBox.style.fontSize = '100px';
+    const cs = getComputedStyle(markBox);
+    const avail = markBox.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
+    markBox.style.fontSize = (100 * avail / mark.getBoundingClientRect().width).toFixed(2) + 'px';
+  }
+  fitMark();
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitMark);
+  let fitTimer;
+  window.addEventListener('resize', () => { clearTimeout(fitTimer); fitTimer = setTimeout(fitMark, 120); });
+
+  const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  const footer = document.querySelector('.site-footer');
+  if (!finePointer || reduceMotion) {
+    footer.classList.add('footer-static');
+  } else {
+    const level = chars.map(() => 0);
+    const target = chars.map(() => 0);
+    let raf = 0;
+    function frame() {
+      let moving = false;
+      chars.forEach((c, i) => {
+        level[i] += (target[i] - level[i]) * 0.12;
+        if (Math.abs(target[i] - level[i]) > 0.002) moving = true;
+        c.style.setProperty('--l', level[i].toFixed(3));
+      });
+      raf = moving ? requestAnimationFrame(frame) : 0;
+    }
+    const kick = () => { if (!raf) raf = requestAnimationFrame(frame); };
+    footer.addEventListener('pointermove', e => {
+      const box = markBox.getBoundingClientRect();
+      // Influence fades as the pointer moves away from the wordmark vertically
+      const dy = Math.max(0, box.top - e.clientY);
+      const vy = Math.max(0, 1 - dy / (box.height * 2.2));
+      const reach = box.width * 0.16;
+      chars.forEach((c, i) => {
+        const r = c.getBoundingClientRect();
+        const dx = Math.abs(e.clientX - (r.left + r.width / 2));
+        target[i] = Math.max(0, 1 - dx / reach) * vy;
+      });
+      kick();
+    });
+    footer.addEventListener('pointerleave', () => { target.fill(0); kick(); });
+  }
 
   /* ---------- Footer year ---------- */
   document.getElementById('year').textContent = new Date().getFullYear();
