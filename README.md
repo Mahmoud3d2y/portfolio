@@ -30,7 +30,7 @@ Everything you need to change is marked with an `EDIT:` comment in `index.html`.
 | About text | `index.html` → About section, plus the French version in `js/main.js` (`about.text`, `about.p1`, `about.p2`) |
 | Portrait | Replace `assets/img/mahmoud.jpg` (portrait format, dark background works best) |
 | Social links | `index.html` → the `socials` list in the hero, the footer Contact column, and `sameAs` in the JSON-LD at the top. The Instagram card text is `ig.bio` (French in `js/main.js`). |
-| Site address | `index.html` → `<link rel="canonical">` |
+| Site address | `index.html` → `<link rel="canonical">`, `og:image` and the JSON-LD `image` (currently https://mahmoud-saadaoui.vercel.app/) |
 | A new project | Copy one `<article class="project">` block in the Work section, add its screenshots to `assets/work/` (name-960.jpg and name-1440.jpg), and add its French `name.kind` text in `js/main.js`. Add `<span class="project-tag">` for labels like "In progress". |
 
 Any text with a `data-i18n="key"` attribute has its French version under the same key in `js/main.js`.
@@ -45,4 +45,4 @@ Then open http://localhost:8790.
 
 ## Deploying
 
-Upload the folder to any static host (GitHub Pages, Netlify, Cloudflare Pages, cPanel). `scripts/` and `README.md` are not needed online.
+The site is hosted on Vercel (project `mahmoud-saadaoui`, https://mahmoud-saadaoui.vercel.app) and deploys automatically on every push to `main`. `.vercelignore` keeps the README and scripts off the live site. GitHub Pages also serves a copy at https://mahmoud3d2y.github.io/portfolio/.
