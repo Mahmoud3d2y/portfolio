@@ -1,0 +1,5 @@
+# Files Vercel must not publish (same syntax as .gitignore)
+README.md
+scripts
+.claude
+.wrangler
