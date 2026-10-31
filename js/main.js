@@ -52,6 +52,12 @@
     'work.title': 'Projets choisis',
     'tinda.kind': 'Site corporate · 34 pages · FR / EN',
     'mick.kind': 'Portfolio personnel · Aviation · EN / FR',
+    'mood.kind': 'Site de restaurant · Cuisine libanaise &amp; pâtisserie · Next.js',
+    'optique.kind': 'Sélecteur de verres pour opticiens · Prix + commande WhatsApp',
+    'cedar.kind': 'Devis en ligne · Solaire, groupes &amp; clim · FR / EN',
+    'moodres.kind': 'Application de réservations pour l’équipe MOOD · Next.js',
+    'tag.progress': 'En cours',
+    'tag.private': 'Privé',
     'newTab': '(s’ouvre dans un nouvel onglet)',
 
     'services.eyebrow': 'Services',
