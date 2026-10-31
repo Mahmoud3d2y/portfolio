@@ -3,3 +3,5 @@ README.md
 scripts
 .claude
 .wrangler
+.env*
+.vercel
