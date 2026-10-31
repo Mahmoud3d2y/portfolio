@@ -29,6 +29,7 @@ Everything you need to change is marked with an `EDIT:` comment in `index.html`.
 | Email address | `index.html` → Contact section (the link **and** the `data-email` on the copy button) — currently mahmoudsaadaoui029@gmail.com |
 | About text | `index.html` → About section, plus the French version in `js/main.js` (`about.text`, `about.p1`, `about.p2`) |
 | Portrait | Replace `assets/img/mahmoud.jpg` (portrait format, dark background works best) |
+| Social links | `index.html` → the `socials` list in the hero, the footer Contact column, and `sameAs` in the JSON-LD at the top. The Instagram card text is `ig.bio` (French in `js/main.js`). |
 | Site address | `index.html` → `<link rel="canonical">` |
 | A new project | Copy one `<article class="project">` block in the Work section, add its screenshots to `assets/work/` (name-960.jpg and name-1440.jpg), and add its French `name.kind` text in `js/main.js`. Add `<span class="project-tag">` for labels like "In progress". |
 

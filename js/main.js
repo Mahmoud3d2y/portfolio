@@ -57,6 +57,9 @@
     'cedar.kind': 'Devis en ligne · Solaire, groupes &amp; clim · FR / EN',
     'moodres.kind': 'Application de réservations pour l’équipe MOOD · Next.js',
     'tag.progress': 'En cours',
+    'socials.label': 'Profils sociaux',
+    'ig.bio': 'Web designer &amp; développeur freelance · Brazzaville',
+    'ig.follow': 'Suivre sur Instagram',
     'tag.private': 'Privé',
     'newTab': '(s’ouvre dans un nouvel onglet)',
 
@@ -456,6 +459,33 @@
     sheet.querySelectorAll('.sheet-view').forEach(v => { v.hidden = v.dataset.view !== 'main'; });
     document.querySelectorAll('.app-missing').forEach(m => { m.hidden = true; });
   });
+
+  /* ---------- Instagram card: hover on computers, tap-to-open on touch screens ---------- */
+  const igItem = document.querySelector('.social-ig');
+  const igPill = igItem.querySelector('[data-ig]');
+  const noHover = window.matchMedia('(hover: none)');
+  const setIg = open => {
+    igItem.classList.toggle('is-open', open);
+    igItem.classList.remove('is-closed');
+  };
+  igPill.addEventListener('click', e => {
+    // First tap shows the card, second tap opens Instagram
+    if (noHover.matches && !igItem.classList.contains('is-open')) {
+      e.preventDefault();
+      setIg(true);
+    }
+  });
+  document.addEventListener('click', e => {
+    if (igItem.classList.contains('is-open') && !igItem.contains(e.target)) setIg(false);
+  });
+  igItem.addEventListener('keydown', e => {
+    if (e.key !== 'Escape') return;
+    igItem.classList.remove('is-open');
+    igItem.classList.add('is-closed'); // overrides :hover and :focus-within until the pointer or focus leaves
+    igPill.focus();
+  });
+  igItem.addEventListener('mouseleave', () => igItem.classList.remove('is-closed'));
+  igItem.addEventListener('focusout', e => { if (!igItem.contains(e.relatedTarget)) igItem.classList.remove('is-closed', 'is-open'); });
 
   /* ---------- Copy email ---------- */
   const toast = document.getElementById('toast');
