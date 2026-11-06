@@ -57,6 +57,7 @@
     'cedar.kind': 'Devis en ligne · Solaire, groupes &amp; clim · FR / EN',
     'moodres.kind': 'Application de réservations pour l’équipe MOOD · Next.js',
     'tag.progress': 'En cours',
+    'trail.hint': 'Passez la souris ici',
     'socials.label': 'Profils sociaux',
     'ig.bio': 'Web designer &amp; développeur freelance · Brazzaville',
     'ig.follow': 'Suivre sur Instagram',

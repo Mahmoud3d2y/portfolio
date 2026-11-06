@@ -6,7 +6,7 @@ Personal portfolio for Mahmoud Saadaoui, independent freelance web designer and 
 - **Greeting**: the hero says Mbote (Lingala), Bonjour and Hello once on load, then settles on the page language; visitors can switch it with the buttons below.
 - **Live clock**: shows the current time in Brazzaville.
 - **Contact chooser**: WhatsApp Business or Gmail, plus a mail-app picker (Gmail, Outlook, Yahoo Mail, Apple Mail, default app). On Android it opens the app or the Play Store; on iPhone it opens the app and shows an App Store link if nothing opened; on computers it opens the web version. Settings are in `MAIL_APPS` and `CONTACT` in `js/main.js`.
-- **Motion effects** (`js/effects.js`): magnetic buttons, 3D tilt on project cards, word-by-word title reveal, shimmering availability text and scrambling menu links, ported to plain JavaScript from [unlumen UI](https://github.com/leovvx/unlumen-ui-docs) (MIT, © 2026 Léo Wicki). They switch off for reduced motion; pointer effects also switch off on touch screens.
+- **Motion effects** (`js/effects.js`): magnetic buttons, 3D tilt on project cards, word-by-word title reveal, shimmering availability text and scrambling menu links, ported to plain JavaScript from [unlumen UI](https://github.com/leovvx/unlumen-ui-docs) (MIT, © 2026 Léo Wicki). The image trail on the Selected work header is ported from [VengeanceUI](https://github.com/Ashutoshx7/VengeanceUI) (MIT, © 2025–2026 Ashutoshx7). They switch off for reduced motion; pointer effects also switch off on touch screens.
 - **Accessible**: skip link, visible focus, keyboard-operable mobile menu (Escape closes it), reduced-motion support, AA text contrast.
 
 ## Structure
@@ -15,7 +15,7 @@ Personal portfolio for Mahmoud Saadaoui, independent freelance web designer and 
 index.html            The whole page
 css/style.css         All styles; colors, fonts and spacing are variables at the top
 js/main.js            Language, greeting, Brazzaville clock, menu, scroll effects, copy-email button
-js/effects.js         Motion effects adapted from unlumen UI (MIT licence notice inside)
+js/effects.js         Motion effects adapted from unlumen UI and VengeanceUI (MIT licence notices inside)
 assets/img/           Portrait (mahmoud.jpg)
 assets/work/          Project screenshots (960px and 1440px JPEG)
 assets/icons/         Favicon

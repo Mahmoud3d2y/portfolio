@@ -14,6 +14,10 @@
    substantial portions of the Software. THE SOFTWARE IS PROVIDED "AS IS",
    WITHOUT WARRANTY OF ANY KIND.
 
+   Image Trail is ported from VengeanceUI (https://github.com/Ashutoshx7/VengeanceUI).
+   MIT License — Copyright (c) 2025-2026 Ashutoshx7, under the same permission
+   notice as above.
+
    Every effect is skipped when the visitor asks for reduced motion;
    pointer effects are also skipped on touch screens.
    ========================================================= */
@@ -105,6 +109,46 @@
         shine.style.setProperty('--y', `${(py + 0.5) * 100}%`);
       });
       el.addEventListener('pointerleave', () => { sx.set(0); sy.set(0); });
+    });
+  }
+
+  /* ---------- Image Trail: screenshots spring out under the cursor, then fade ---------- */
+  // Same defaults as VengeanceUI: a new image every 80px / 50ms, 1s life, 8 at most, tilted ±20°.
+  // Computer only: on a touch screen, dragging would fight with page scrolling.
+  if (finePointer) {
+    document.querySelectorAll('[data-image-trail]').forEach(zone => {
+      const images = zone.dataset.imageTrail.split(/\s+/).map(n => `assets/work/${n}-960.jpg`);
+      let preloaded = false, last = null, lastTime = 0, index = 0;
+      zone.classList.add('trail-ready');
+      zone.addEventListener('pointerenter', () => {
+        if (preloaded) return;
+        preloaded = true;
+        images.forEach(src => { new Image().src = src; });
+      });
+      zone.addEventListener('pointermove', e => {
+        const r = zone.getBoundingClientRect();
+        const x = e.clientX - r.left, y = e.clientY - r.top;
+        const now = performance.now();
+        if (last && (Math.hypot(x - last.x, y - last.y) < 80 || now - lastTime < 50)) return;
+        last = { x, y };
+        lastTime = now;
+        const img = document.createElement('img');
+        img.className = 'trail-img';
+        img.src = images[index++ % images.length];
+        img.alt = '';
+        img.style.left = x + 'px';
+        img.style.top = y + 'px';
+        img.style.setProperty('--r', (Math.random() * 40 - 20).toFixed(1) + 'deg');
+        zone.appendChild(img);
+        const live = zone.querySelectorAll('.trail-img:not(.out)');
+        if (live.length > 8) live[0].remove();
+        // Fade out after 1s, then remove (a timer, not animationend: that never fires in a hidden tab)
+        setTimeout(() => {
+          img.classList.add('out');
+          setTimeout(() => img.remove(), 420);
+        }, 1000);
+      });
+      zone.addEventListener('pointerleave', () => { last = null; });
     });
   }
 
