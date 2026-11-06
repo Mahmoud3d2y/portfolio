@@ -184,6 +184,7 @@
     lang = lang === 'fr' ? 'en' : 'fr';
     store.set('ms-lang', lang);
     applyLang();
+    document.dispatchEvent(new CustomEvent('langchange', { detail: lang })); // lets js/effects.js redo its text effects
   });
 
   /* ---------- Greeting: Mbote (Lingala) · Bonjour · Hello ---------- */

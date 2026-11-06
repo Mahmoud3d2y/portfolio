@@ -1199,6 +1199,54 @@ button { font: inherit; color: inherit; }
   @keyframes sheet-up { from { transform: translateY(100%); } }
 }
 
+/* ---------- Effects ported from unlumen UI (see js/effects.js) ---------- */
+/* Tilt: the card keeps its 3D context; a soft light follows the cursor */
+[data-tilt] { transform-style: preserve-3d; will-change: transform; }
+.tilt-shine {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: radial-gradient(420px circle at var(--x, 50%) var(--y, 50%), rgb(255 255 255 / 0.2), transparent 60%);
+  opacity: 0;
+  transition: opacity 400ms ease;
+}
+.project:hover .tilt-shine { opacity: 1; }
+.project-arrow { z-index: 2; }
+
+/* Text Reveal: each word goes from blurred to sharp, one after another */
+.tr-word {
+  display: inline-block;
+  opacity: 0.1;
+  filter: blur(8px);
+  transition: opacity 500ms ease-out, filter 500ms ease-out;
+  transition-delay: calc(var(--i) * 50ms);
+}
+.tr-in .tr-word { opacity: 1; filter: blur(0); }
+
+/* Shimmering Text: a band of light sweeps across, then pauses */
+.shimmer {
+  --base: var(--on-dark-muted);
+  --shine: var(--on-dark);
+  --spread: 2.5em;
+  color: transparent;
+  background-image:
+    linear-gradient(90deg, transparent calc(50% - var(--spread)), var(--shine), transparent calc(50% + var(--spread))),
+    linear-gradient(var(--base), var(--base));
+  background-size: 250% 100%, auto;
+  background-repeat: no-repeat, padding-box;
+  -webkit-background-clip: text;
+          background-clip: text;
+  animation: shimmer 3s linear infinite;
+}
+@keyframes shimmer {
+  0% { background-position: 100% center, 0 0; }
+  75%, 100% { background-position: 0% center, 0 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .shimmer { background: none; color: var(--on-dark-muted); }
+}
+
 /* ---------- Toast ---------- */
 .toast {
   position: fixed;

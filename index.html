@@ -52,16 +52,16 @@
 
       <nav class="primary-nav" id="primary-nav" aria-label="Primary">
         <ul>
-          <li><a href="#about" data-i18n="nav.about">About</a></li>
-          <li><a href="#work" data-i18n="nav.work">Work</a></li>
-          <li><a href="#services" data-i18n="nav.services">Services</a></li>
-          <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
+          <li><a href="#about" data-scramble data-i18n="nav.about">About</a></li>
+          <li><a href="#work" data-scramble data-i18n="nav.work">Work</a></li>
+          <li><a href="#services" data-scramble data-i18n="nav.services">Services</a></li>
+          <li><a href="#contact" data-scramble data-i18n="nav.contact">Contact</a></li>
         </ul>
       </nav>
 
       <div class="header-tools">
         <button class="tool-btn" type="button" id="lang-toggle" aria-label="Passer en français" lang="fr">FR</button>
-        <a class="book-link" href="mailto:mahmoudsaadaoui029@gmail.com?subject=Project%20inquiry" data-contact>
+        <a class="book-link" data-magnetic="0.3" href="mailto:mahmoudsaadaoui029@gmail.com?subject=Project%20inquiry" data-contact>
           <span data-i18n="nav.book">Let’s talk</span>
           <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
         </a>
@@ -104,9 +104,9 @@
 
         <!-- EDIT: social links (also listed in the footer and in the JSON-LD "sameAs" at the top) -->
         <ul class="socials" aria-label="Social profiles" data-i18n-aria="socials.label">
-          <li><a class="social-pill" href="https://dribbble.com/mahmoud-saadaoui" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M19.13 5.09C15.22 9.14 10 10.44 2.25 10.94M21.75 12.84c-6.62-1.41-12.14 1-16.38 6.32M8.56 2.75c4.37 6 6 9.42 8 17.72"/></svg><span class="social-name">Dribbble</span><span class="sr-only" data-i18n="newTab">(opens in a new tab)</span></a></li>
+          <li><a class="social-pill" data-magnetic="0.25" href="https://dribbble.com/mahmoud-saadaoui" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M19.13 5.09C15.22 9.14 10 10.44 2.25 10.94M21.75 12.84c-6.62-1.41-12.14 1-16.38 6.32M8.56 2.75c4.37 6 6 9.42 8 17.72"/></svg><span class="social-name">Dribbble</span><span class="sr-only" data-i18n="newTab">(opens in a new tab)</span></a></li>
           <li class="social-ig">
-            <a class="social-pill" href="https://www.instagram.com/mahmoud3d2y/" target="_blank" rel="noopener" aria-describedby="ig-card" data-ig><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37zM17.5 6.5h.01"/></svg><span class="social-name">Instagram</span><span class="sr-only" data-i18n="newTab">(opens in a new tab)</span></a>
+            <a class="social-pill" data-magnetic="0.25" href="https://www.instagram.com/mahmoud3d2y/" target="_blank" rel="noopener" aria-describedby="ig-card" data-ig><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37zM17.5 6.5h.01"/></svg><span class="social-name">Instagram</span><span class="sr-only" data-i18n="newTab">(opens in a new tab)</span></a>
             <div class="ig-card" id="ig-card">
               <div class="ig-head">
                 <span class="ig-ring"><img src="assets/img/mahmoud.jpg" width="640" height="853" alt=""></span>
@@ -120,8 +120,8 @@
               <a class="ig-follow" href="https://www.instagram.com/mahmoud3d2y/" target="_blank" rel="noopener"><span data-i18n="ig.follow">Follow on Instagram</span><span class="sr-only" data-i18n="newTab">(opens in a new tab)</span></a>
             </div>
           </li>
-          <li><a class="social-pill" href="https://www.linkedin.com/in/mahmoud-saadaoui-2131913bb/" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg><span class="social-name">LinkedIn</span><span class="sr-only" data-i18n="newTab">(opens in a new tab)</span></a></li>
-          <li><a class="social-pill" href="https://github.com/Mahmoud3d2y" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg><span class="social-name">GitHub</span><span class="sr-only" data-i18n="newTab">(opens in a new tab)</span></a></li>
+          <li><a class="social-pill" data-magnetic="0.25" href="https://www.linkedin.com/in/mahmoud-saadaoui-2131913bb/" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg><span class="social-name">LinkedIn</span><span class="sr-only" data-i18n="newTab">(opens in a new tab)</span></a></li>
+          <li><a class="social-pill" data-magnetic="0.25" href="https://github.com/Mahmoud3d2y" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg><span class="social-name">GitHub</span><span class="sr-only" data-i18n="newTab">(opens in a new tab)</span></a></li>
         </ul>
 
         <div class="hero-bottom">
@@ -137,7 +137,7 @@
     <section class="section about" id="about" aria-labelledby="about-title">
       <div class="wrap about-grid">
         <div class="about-intro reveal">
-          <h2 class="h-section" id="about-title" data-i18n="about.title">About me</h2>
+          <h2 class="h-section" data-text-reveal id="about-title" data-i18n="about.title">About me</h2>
           <!-- EDIT: rewrite in your own words if you like -->
           <p data-i18n="about.text">I’m an independent web designer and front-end developer. I don’t work for an agency or a company: every project is designed, written and coded by me, from the first conversation to the day it goes live.</p>
         </div>
@@ -166,14 +166,14 @@
       <div class="wrap">
         <header class="section-head reveal">
           <p class="eyebrow"><span class="bullet" aria-hidden="true"></span><span data-i18n="work.eyebrow">Portfolio</span></p>
-          <h2 class="h-section" id="work-title" data-i18n="work.title">Selected work</h2>
+          <h2 class="h-section" data-text-reveal id="work-title" data-i18n="work.title">Selected work</h2>
         </header>
 
         <div class="work-grid">
           <article class="project reveal">
             <!-- EDIT: update the address when MOOD moves to its own domain -->
             <a class="project-link" href="https://mood-site-beta.vercel.app/" target="_blank" rel="noopener">
-              <div class="project-media">
+              <div class="project-media" data-tilt="5">
                 <img src="assets/work/mood-1440.jpg" srcset="assets/work/mood-960.jpg 960w, assets/work/mood-1440.jpg 1440w" sizes="(min-width: 900px) 46vw, 100vw" width="1440" height="900" loading="lazy" alt="MOOD home page: “Le goût du Liban, au cœur de Brazzaville” over a dim photo of the restaurant dining room, with a red Reserve button.">
                 <span class="project-arrow" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
               </div>
@@ -186,7 +186,7 @@
           <article class="project reveal">
             <!-- EDIT: update this address if TINDA moves to its own domain -->
             <a class="project-link" href="https://tinda-website-ebon.vercel.app/" target="_blank" rel="noopener">
-              <div class="project-media">
+              <div class="project-media" data-tilt="5">
                 <img src="assets/work/tinda-1440.jpg" srcset="assets/work/tinda-960.jpg 960w, assets/work/tinda-1440.jpg 1440w" sizes="(min-width: 900px) 46vw, 100vw" width="1440" height="900" loading="lazy" alt="TINDA home page: a dark navy hero reading “Bâtir l’infrastructure du Congo de demain” beside a photo of a lit urban canal.">
                 <span class="project-arrow" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
               </div>
@@ -198,7 +198,7 @@
           </article>
           <article class="project reveal">
             <a class="project-link" href="https://verre-novax.pages.dev/" target="_blank" rel="noopener">
-              <div class="project-media">
+              <div class="project-media" data-tilt="5">
                 <img src="assets/work/optique-1440.jpg" srcset="assets/work/optique-960.jpg 960w, assets/work/optique-1440.jpg 1440w" sizes="(min-width: 900px) 46vw, 100vw" width="1440" height="900" loading="lazy" alt="Univers Optique lens selector: a teal header reading “Choisissez vos verres progressifs Novax” above step-by-step colour choice cards.">
                 <span class="project-arrow" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
               </div>
@@ -211,7 +211,7 @@
           <article class="project reveal">
             <!-- EDIT: remove the "In progress" tag when the site is finished -->
             <a class="project-link" href="https://cedar-nexus.vercel.app/" target="_blank" rel="noopener">
-              <div class="project-media">
+              <div class="project-media" data-tilt="5">
                 <img src="assets/work/cedar-1440.jpg" srcset="assets/work/cedar-960.jpg 960w, assets/work/cedar-1440.jpg 1440w" sizes="(min-width: 900px) 46vw, 100vw" width="1440" height="900" loading="lazy" alt="Cedar Nexus home page: bold navy headline about solar energy, generators and air conditioning in Brazzaville, with a yellow quote button.">
                 <span class="project-arrow" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
               </div>
@@ -223,7 +223,7 @@
           </article>
           <article class="project reveal">
             <a class="project-link" href="https://mahmoud3d2y.github.io/mick-portfolio/" target="_blank" rel="noopener">
-              <div class="project-media">
+              <div class="project-media" data-tilt="5">
                 <img src="assets/work/mick-1440.jpg" srcset="assets/work/mick-960.jpg 960w, assets/work/mick-1440.jpg 1440w" sizes="(min-width: 900px) 46vw, 100vw" width="1440" height="900" loading="lazy" alt="Mikael Abuye home page: “Every aircraft, spotless and flight-ready” over a dusk photo of an airport apron.">
                 <span class="project-arrow" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
               </div>
@@ -234,7 +234,7 @@
             </a>
           </article>
           <article class="project reveal">
-              <div class="project-media">
+              <div class="project-media" data-tilt="5">
                 <img src="assets/work/moodres-1440.jpg" srcset="assets/work/moodres-960.jpg 960w, assets/work/moodres-1440.jpg 1440w" sizes="(min-width: 900px) 46vw, 100vw" width="1440" height="900" loading="lazy" alt="MOOD Reservations sign-in screen: the MOOD logo above a password field and a red sign-in button on a dark red background.">
                 
               </div>
@@ -253,7 +253,7 @@
         <header class="section-head section-head--split reveal">
           <div>
             <p class="eyebrow"><span class="bullet" aria-hidden="true"></span><span data-i18n="services.eyebrow">Services</span></p>
-            <h2 class="h-section" id="services-title" data-i18n="services.title">What I can do for you</h2>
+            <h2 class="h-section" data-text-reveal id="services-title" data-i18n="services.title">What I can do for you</h2>
           </div>
           <p class="section-lede" data-i18n="services.lede">Hand-coded websites with no page builder and no subscription. The code is yours.</p>
         </header>
@@ -289,15 +289,15 @@
         <div class="cta" data-dark>
           <img class="cta-photo" src="assets/img/mahmoud.jpg" width="640" height="853" loading="lazy" alt="">
           <div class="cta-body">
-            <p class="eyebrow eyebrow--dark"><span class="bullet" aria-hidden="true"></span><span data-i18n="contact.eyebrow">Available for new projects</span></p>
-            <h2 class="cta-title" id="contact-title" data-i18n="contact.title">Got a vision? Let’s bring it to life.</h2>
+            <p class="eyebrow eyebrow--dark"><span class="bullet" aria-hidden="true"></span><span class="shimmer" data-i18n="contact.eyebrow">Available for new projects</span></p>
+            <h2 class="cta-title" data-text-reveal id="contact-title" data-i18n="contact.title">Got a vision? Let’s bring it to life.</h2>
             <p class="cta-text" data-i18n="contact.text">Tell me what you do and what your site needs to achieve. Wherever you are, we can work together.</p>
             <div class="cta-actions">
-              <a class="btn btn-light" href="mailto:mahmoudsaadaoui029@gmail.com?subject=Project%20inquiry" data-contact>
+              <a class="btn btn-light" data-magnetic href="mailto:mahmoudsaadaoui029@gmail.com?subject=Project%20inquiry" data-contact>
                 <span data-i18n="contact.cta">Contact me</span>
                 <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
               </a>
-              <a class="btn btn-outline" href="https://wa.me/242061198139" target="_blank" rel="noopener" data-whatsapp>
+              <a class="btn btn-outline" data-magnetic href="https://wa.me/242061198139" target="_blank" rel="noopener" data-whatsapp>
                 <svg class="icon icon-fill" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-wa"/></svg>
                 WhatsApp<span class="sr-only" data-i18n="newTab">(opens in a new tab)</span>
               </a>
@@ -312,8 +312,8 @@
     <div class="wrap">
       <div class="footer-hero">
         <div class="footer-pitch">
-          <p class="footer-kicker"><span class="dot" aria-hidden="true"></span><span data-i18n="footer.kicker">Currently taking new projects</span></p>
-          <a class="footer-cta" href="mailto:mahmoudsaadaoui029@gmail.com?subject=Project%20inquiry" data-contact>
+          <p class="footer-kicker"><span class="dot" aria-hidden="true"></span><span class="shimmer" data-i18n="footer.kicker">Currently taking new projects</span></p>
+          <a class="footer-cta" data-magnetic="0.15" href="mailto:mahmoudsaadaoui029@gmail.com?subject=Project%20inquiry" data-contact>
             <span data-i18n="footer.cta">Let’s build something</span>
             <span class="footer-cta-arrow" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
           </a>
@@ -338,9 +338,9 @@
           <p class="footer-head" data-i18n="footer.h1">Menu</p>
           <ul>
             <li><a href="#top" data-i18n="nav.home">Home</a></li>
-            <li><a href="#about" data-i18n="nav.about">About</a></li>
-            <li><a href="#work" data-i18n="nav.work">Work</a></li>
-            <li><a href="#services" data-i18n="nav.services">Services</a></li>
+            <li><a href="#about" data-scramble data-i18n="nav.about">About</a></li>
+            <li><a href="#work" data-scramble data-i18n="nav.work">Work</a></li>
+            <li><a href="#services" data-scramble data-i18n="nav.services">Services</a></li>
           </ul>
         </nav>
         <div>
@@ -487,5 +487,6 @@
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
   <script src="js/main.js" defer></script>
+  <script src="js/effects.js" defer></script>
 </body>
 </html>
